@@ -17,7 +17,7 @@ struct PersistentStore {
     var context: NSManagedObjectContext { container.viewContext }
     
     init() {
-        container = NSPersistentContainer(name: "Activity")
+        container = NSPersistentContainer(name: "ActivityManager")
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {

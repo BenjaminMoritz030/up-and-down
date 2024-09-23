@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,12 +14,17 @@
 		B2110D072C60B8850087E467 /* plan_biTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110D062C60B8850087E467 /* plan_biTests.swift */; };
 		B2110D112C60B8850087E467 /* plan_biUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110D102C60B8850087E467 /* plan_biUITests.swift */; };
 		B2110D132C60B8850087E467 /* plan_biUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110D122C60B8850087E467 /* plan_biUITestsLaunchTests.swift */; };
-		B24A19B62C945CFD006215EA /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A19B52C945CFD006215EA /* ActivitiesView.swift */; };
 		B24A19BA2C9578DC006215EA /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A19B92C9578DC006215EA /* PersistentStore.swift */; };
-		B24A19BD2C957925006215EA /* Activity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B24A19BB2C957925006215EA /* Activity.xcdatamodeld */; };
 		B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A19C42C957C85006215EA /* ActivityListView.swift */; };
+		B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */; };
 		B25BC4392C91FB77006E54CC /* ActivitySuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */; };
 		B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC43A2C91FC10006E54CC /* CheckInView.swift */; };
+		B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */; };
+		B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */; };
+		B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C4981C2C9C48B10030F8EA /* Activities.json */; };
+		B2C498202C9C49860030F8EA /* ActivityManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */; };
+		B2C498222C9C531B0030F8EA /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C498212C9C531B0030F8EA /* FileManager.swift */; };
+		B2C498262C9C54E10030F8EA /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C498252C9C54E10030F8EA /* Activities.swift */; };
 		B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C859562C6500B800C0F33D /* ActivityViewModel.swift */; };
 		B2EC1B332C6212CE008370F8 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC1B322C6212CE008370F8 /* StartView.swift */; };
 /* End PBXBuildFile section */
@@ -52,15 +57,24 @@
 		B2110D0C2C60B8850087E467 /* plan-biUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "plan-biUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2110D102C60B8850087E467 /* plan_biUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plan_biUITests.swift; sourceTree = "<group>"; };
 		B2110D122C60B8850087E467 /* plan_biUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plan_biUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B24A19B52C945CFD006215EA /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		B24A19B92C9578DC006215EA /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
-		B24A19BC2C957925006215EA /* ActivityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityModel.xcdatamodel; sourceTree = "<group>"; };
 		B24A19C42C957C85006215EA /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
 		B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySuggestionView.swift; sourceTree = "<group>"; };
 		B25BC43A2C91FC10006E54CC /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
+		B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySheetView.swift; sourceTree = "<group>"; };
+		B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
+		B2C4981C2C9C48B10030F8EA /* Activities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Activities.json; sourceTree = "<group>"; };
+		B2C4981F2C9C49860030F8EA /* ActivityManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityManager.xcdatamodel; sourceTree = "<group>"; };
+		B2C498212C9C531B0030F8EA /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		B2C498252C9C54E10030F8EA /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		B2C859562C6500B800C0F33D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		B2EC1B322C6212CE008370F8 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B2C498272C9C59440030F8EA /* New Folder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "New Folder"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B2110CEF2C60B8830087E467 /* Frameworks */ = {
@@ -148,7 +162,8 @@
 		B24A19B12C9435B5006215EA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B24A19BB2C957925006215EA /* Activity.xcdatamodeld */,
+				B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */,
+				B2C498252C9C54E10030F8EA /* Activities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +179,8 @@
 		B24A19B32C9436A3006215EA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B2C498272C9C59440030F8EA /* New Folder */,
+				B2C498212C9C531B0030F8EA /* FileManager.swift */,
 				B24A19B72C9577CD006215EA /* CoreData */,
 				B24A19B12C9435B5006215EA /* Models */,
 			);
@@ -183,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				B24A19B92C9578DC006215EA /* PersistentStore.swift */,
+				B2C4981C2C9C48B10030F8EA /* Activities.json */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -193,8 +211,10 @@
 				B2EC1B322C6212CE008370F8 /* StartView.swift */,
 				B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */,
 				B25BC43A2C91FC10006E54CC /* CheckInView.swift */,
-				B24A19B52C945CFD006215EA /* ActivitiesView.swift */,
 				B24A19C42C957C85006215EA /* ActivityListView.swift */,
+				B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */,
+				B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */,
+				B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +233,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B2C498272C9C59440030F8EA /* New Folder */,
 			);
 			name = "plan-bi";
 			productName = "plan-bi";
@@ -304,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2110CFD2C60B8850087E467 /* Preview Assets.xcassets in Resources */,
+				B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */,
 				B2110CFA2C60B8850087E467 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,16 +353,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B24A19BD2C957925006215EA /* Activity.xcdatamodeld in Sources */,
+				B2C498202C9C49860030F8EA /* ActivityManager.xcdatamodeld in Sources */,
+				B2C498262C9C54E10030F8EA /* Activities.swift in Sources */,
 				B25BC4392C91FB77006E54CC /* ActivitySuggestionView.swift in Sources */,
+				B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */,
+				B2C498222C9C531B0030F8EA /* FileManager.swift in Sources */,
 				B2EC1B332C6212CE008370F8 /* StartView.swift in Sources */,
+				B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */,
 				B2110CF82C60B8830087E467 /* ContentView.swift in Sources */,
 				B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */,
 				B2110CF62C60B8830087E467 /* plan_biApp.swift in Sources */,
 				B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */,
 				B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */,
-				B24A19B62C945CFD006215EA /* ActivitiesView.swift in Sources */,
 				B24A19BA2C9578DC006215EA /* PersistentStore.swift in Sources */,
+				B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,13 +692,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B24A19BB2C957925006215EA /* Activity.xcdatamodeld */ = {
+		B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B24A19BC2C957925006215EA /* ActivityModel.xcdatamodel */,
+				B2C4981F2C9C49860030F8EA /* ActivityManager.xcdatamodel */,
 			);
-			currentVersion = B24A19BC2C957925006215EA /* ActivityModel.xcdatamodel */;
-			path = Activity.xcdatamodeld;
+			currentVersion = B2C4981F2C9C49860030F8EA /* ActivityManager.xcdatamodel */;
+			path = ActivityManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

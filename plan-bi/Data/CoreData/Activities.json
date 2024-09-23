@@ -1,0 +1,124 @@
+{
+    "activities": [
+        {
+            "title": "Go for a Walk",
+            "details": "A relaxing walk in the park.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Watch a Movie",
+            "details": "Enjoy a movie at home.",
+            "mood": "Very Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Read a Book",
+            "details": "Spend some quiet time reading.",
+            "mood": "Medium",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Cook a New Recipe",
+            "details": "Try cooking a new and exciting dish.",
+            "mood": "Bad",
+            "drive": "Medium"
+        },
+        {
+            "title": "Go for a Run",
+            "details": "A quick run to energize yourself.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Meditate",
+            "details": "Relax and clear your mind with meditation.",
+            "mood": "Very Bad",
+            "drive": "Low"
+        },
+        {
+            "title": "Listen to Music",
+            "details": "Enjoy some of your favorite tunes.",
+            "mood": "Good",
+            "drive": "Very High"
+        },
+        {
+            "title": "Do Yoga",
+            "details": "Stretch and relax your body with yoga.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Draw or Paint",
+            "details": "Express yourself creatively through art.",
+            "mood": "Very Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Journal Your Thoughts",
+            "details": "Write down your thoughts and feelings.",
+            "mood": "Good",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Play a Board Game",
+            "details": "Challenge yourself with a fun board game.",
+            "mood": "Bad",
+            "drive": "Medium"
+        },
+        {
+            "title": "Call a Friend",
+            "details": "Catch up with an old friend on the phone.",
+            "mood": "Very Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Go Hiking",
+            "details": "Explore nature and enjoy a hike.",
+            "mood": "Good",
+            "drive": "Very High"
+        },
+        {
+            "title": "Take a Nap",
+            "details": "Recharge with a short nap.",
+            "mood": "Bad",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Try a New Hobby",
+            "details": "Explore a new activity or craft.",
+            "mood": "Very Bad",
+            "drive": "High"
+        },
+        {
+            "title": "Visit a Museum",
+            "details": "Explore art and history at a local museum.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Go to the Gym",
+            "details": "Get a good workout at the gym.",
+            "mood": "Medium",
+            "drive": "Very High"
+        },
+        {
+            "title": "Watch a Documentary",
+            "details": "Learn something new by watching a documentary.",
+            "mood": "Bad",
+            "drive": "Low"
+        },
+        {
+            "title": "Do a Puzzle",
+            "details": "Challenge your brain with a jigsaw puzzle.",
+            "mood": "Good",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Plan Your Week",
+            "details": "Organize your tasks for the week ahead.",
+            "mood": "Medium",
+            "drive": "Medium"
+        }
+    ]
+}

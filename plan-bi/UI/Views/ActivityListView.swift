@@ -8,34 +8,21 @@
 import SwiftUI
 
 struct ActivityListView: View {
-    @StateObject var viewModel = ActivityViewModel()
-
+    var activities: [ActivityEntity]
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
-                ForEach(viewModel.activities, id: \.self) { acitvity in
-                    Text(acitvity.name ?? "")
-                }
-                .onDelete { indexSet in
-                    indexSet.forEach { index in
-                        let activity = viewModel.activities[index]
-                        viewModel.deleteActivity(activity: activity)
+                ForEach(activities, id: \.self) { activity in
+                    NavigationLink(destination: ActivityDetailView(activity: activity)) {
+                        Text(activity.title ?? "")
                     }
                 }
+                .navigationBarTitle("Geplante Aktivitäten")
             }
-            .navigationBarTitle("Aktivitäten")
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.addActivity(name: "Ruhepause")
-            }, label: {
-                Text("Aktivität hinzufügen")
-            }))
-        }
-        .onAppear {
-            viewModel.fetchActivity()
         }
     }
 }
 
 #Preview {
-    ActivityListView()
+    ActivityListView(activities: [])
 }

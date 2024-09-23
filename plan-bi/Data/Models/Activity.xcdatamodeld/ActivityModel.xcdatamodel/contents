@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+    <entity name="ActivityEntity" representedClassName="ActivityEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="drive" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drive" inverseName="activities" inverseEntity="Drive"/>
-        <relationship name="mood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mood" inverseName="activites" inverseEntity="Mood"/>
+        <relationship name="drive" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DriveEntity"/>
+        <relationship name="mood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MoodEntity"/>
     </entity>
-    <entity name="Drive" representedClassName="Drive" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="drive" inverseEntity="Activity"/>
+    <entity name="AppointmentEntity" representedClassName="AppointmentEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="activities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppointmentEntity" inverseName="activities" inverseEntity="AppointmentEntity"/>
     </entity>
-    <entity name="Mood" representedClassName="Mood" syncable="YES" codeGenerationType="class">
+    <entity name="DriveEntity" representedClassName="DriveEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="activites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="mood" inverseEntity="Activity"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DriveEntity" inverseName="activities" inverseEntity="DriveEntity"/>
+    </entity>
+    <entity name="MoodEntity" representedClassName="MoodEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="activites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MoodEntity" inverseName="activites" inverseEntity="MoodEntity"/>
     </entity>
 </model>
