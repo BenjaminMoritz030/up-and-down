@@ -32,7 +32,6 @@ struct CheckInView: View {
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
-                    //                    .padding()
                     
                     Section(header: Text("How is your drive?")) {
                         Picker("Antrieb", selection: $drive) {

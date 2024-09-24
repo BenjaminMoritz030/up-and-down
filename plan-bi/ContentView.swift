@@ -12,11 +12,17 @@ struct ContentView: View {
         TabView {
             StartView()
                 .tabItem {
-                    Label("Startseite", systemImage: "house.fill")
+                    Label("Home", systemImage: "house.fill")
             }
+            
+            CheckInFlowView()
+                .tabItem {
+                    Label("Check In", systemImage: "apple.meditate")
+                }
+            
             ActivitiesView()
                 .tabItem {
-                    Label("Startseite", systemImage: "calendar")
+                    Label("Calendar", systemImage: "calendar")
                 }
         }
         .tint(.primary)

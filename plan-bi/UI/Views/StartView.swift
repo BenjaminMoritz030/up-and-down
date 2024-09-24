@@ -36,6 +36,8 @@ struct StartView: View {
                         .foregroundColor(.gray)
                         .padding()
                     
+                    
+                VStack{
                     NavigationLink(destination: CheckInView()) {
                         Text("Check In")
                             .foregroundColor(.white)
@@ -50,7 +52,8 @@ struct StartView: View {
                     
                 }
                 .padding(.horizontal)
-                .padding(.bottom, 250)
+                .padding(.top, 500)
+                }
             }
         }
     }

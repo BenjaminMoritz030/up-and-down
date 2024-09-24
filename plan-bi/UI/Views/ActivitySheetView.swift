@@ -23,21 +23,21 @@ struct ActivitySheetView: View {
         NavigationView {
             VStack {
                 Form {
-                    Section(header: Text("Der Name deiner Aktivität")) {
-                        TextField("Bezeichnung", text: $activityTitle)
+                    Section(header: Text("Name of Your Activity")) {
+                        TextField("Description", text: $activityTitle)
                     }
-                    Section(header: Text("Notification")) {
-                        Toggle("Erinnern", isOn: $notificated)
+                    Section(header: Text("Details of Your Activity")) {
+                        TextField("Description", text: $activityTitle)
                     }
                 }
-                .navigationTitle("Eigene Aktivität")
+                .navigationTitle("Add Your own Activity")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {
                             
                             print("Save successfully")
                         }) {
-                            Text("Speichern")
+                            Text("Save")
 //                                .foregroundColor(.white)
 //                                .padding()
 //                                .background(Color.blue)
@@ -46,7 +46,7 @@ struct ActivitySheetView: View {
                         Button(action: {
                             
                         }) {
-                            Text("Abbrechen")
+                            Text("Cancel")
                                 .foregroundColor(.red)
 //                                .padding()
 //                                .background(Color.blue)

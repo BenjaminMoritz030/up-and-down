@@ -17,7 +17,7 @@ struct ActivityListView: View {
                         Text(activity.title ?? "")
                     }
                 }
-                .navigationBarTitle("Geplante Aktivitäten")
+                .navigationBarTitle("Suggested Activities")
             }
         }
     }

@@ -16,21 +16,21 @@ struct ActivityDetailView: View {
                 .font(.largeTitle)
                 .padding(.bottom)
             
-            Text("Beschreibung:")
+            Text("Discription:")
                 .font(.headline)
             Text(activity.details ?? "Keine Details vorhanden")
             
             Spacer()
         }
         .padding()
-        .navigationTitle("Aktivitätsdetails")
+        .navigationTitle("Details of Your Activity")
     }
 }
 
 struct ActivityDetailView_Previews: PreviewProvider {
     static var previews: some View {
         // Erstellen Sie eine "Fake"-Instanz von ActivityEntity ohne Core Data
-        let activity = ActivityEntityPreview(title: "Plan Your Week", details: "Take time to plan your upcoming week.", duration: "30 minutes")
+        let activity = ActivityEntityPreview(title: "Plan Your Week", details: "Take time to plan your upcoming week.")
         
         // Rückgabe der Detailansicht mit der Vorschau-Instanz
         return ActivityDetailViewPreview(activity: activity)
@@ -41,7 +41,6 @@ struct ActivityDetailView_Previews: PreviewProvider {
 struct ActivityEntityPreview {
     var title: String?
     var details: String?
-    var duration: String?
 }
 
 // Vorschau-spezifische View ohne Core Data-Abhängigkeit
@@ -54,11 +53,9 @@ struct ActivityDetailViewPreview: View {
                 .font(.largeTitle)
                 .padding(.bottom)
             
-            Text("Beschreibung:")
+            Text("Discription:")
                 .font(.headline)
             Text(activity.details ?? "Keine Details vorhanden")
-            
-            Text("Dauer: \(activity.duration ?? "Keine Dauer")")
             
             Spacer()
         }
