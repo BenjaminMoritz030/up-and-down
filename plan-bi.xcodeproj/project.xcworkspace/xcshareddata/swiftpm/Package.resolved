@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Mijick/CalendarView.git",
       "state" : {
-        "revision" : "b347587ba39a023b61881158872db9d01a90a9a6",
-        "version" : "1.0.0"
+        "branch" : "main",
+        "revision" : "6730960ae4921a2ad1b9e76505f9c36e27ba9946"
       }
     }
   ],

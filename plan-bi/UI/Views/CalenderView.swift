@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
-
+import MijickCalendarView
 
 struct CalenderView: View {
+    
+    @State private var selectedDate: Date? = nil
+    @State private var selectedRange: MDateRange? = .init()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        MCalendarView(selectedDate: $selectedDate, selectedRange: $selectedRange)
     }
 }
+
 
 #Preview {
     CalenderView()

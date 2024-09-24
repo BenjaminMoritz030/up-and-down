@@ -19,40 +19,60 @@ struct StartView: View {
         
         NavigationStack {
             ZStack {
+                
+                RadialGradient(gradient: Gradient(colors: [Color.yellow, Color.purple]), center: .center, startRadius: 20, endRadius: 800)
+                    .edgesIgnoringSafeArea(.all)
+                
                 VStack {
-
+                    
                     Image("pb-logo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
-
-                    
-                    Text("Up and Down")
-                        .font(.system(size: 30, weight: .bold))
                     
                     Text(dateFormatter.string(from: Date()))
                     // Aktuelles Datum anzeigen
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                         .padding()
                     
                     
-                VStack{
-                    NavigationLink(destination: CheckInView()) {
-                        Text("Check In")
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.gray)
-                            .cornerRadius(10)
+                    Text("Take a deep breath, no need to worry. Let's plan your day together.")
+                        .font(.system(size: 30, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 50)
+                        .padding(.horizontal, 40)
+                    
+                    Text("Affirmation here ...")
+                        .font(.system(size: 20, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.cyan, lineWidth: 2))
+                        .padding(.horizontal, 40)
+                        .foregroundColor(.cyan)
+                    
+                    
+                    
+                    VStack{
+                        
+                        NavigationLink(destination: CheckInView()) {
+                            Text("Check In")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.cyan)
+                                .cornerRadius(10)
+                        }
+                        .padding(.horizontal)
+                        
+                        Spacer()
+                        
                     }
                     .padding(.horizontal)
-                    
-                    Spacer()
-                    
-                }
-                .padding(.horizontal)
-                .padding(.top, 500)
+                    .padding(.top, 280)
                 }
             }
         }

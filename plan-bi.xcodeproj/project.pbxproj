@@ -22,6 +22,7 @@
 		B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC43A2C91FC10006E54CC /* CheckInView.swift */; };
 		B27A2E932CA20A2500EF639C /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E922CA20A2500EF639C /* CalenderView.swift */; };
 		B27A2E962CA2129600EF639C /* CheckInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E952CA2129600EF639C /* CheckInFlowView.swift */; };
+		B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = B27A2E9B2CA2B68800EF639C /* MijickCalendarView */; };
 		B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */; };
 		B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */; };
 		B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C4981C2C9C48B10030F8EA /* Activities.json */; };
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +322,7 @@
 			);
 			mainGroup = B2110CE92C60B8830087E467;
 			packageReferences = (
-				B27A2E992CA2A56C00EF639C /* XCRemoteSwiftPackageReference "CalendarView" */,
+				B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */,
 			);
 			productRefGroup = B2110CF32C60B8830087E467 /* Products */;
 			projectDirPath = "";
@@ -707,15 +709,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B27A2E992CA2A56C00EF639C /* XCRemoteSwiftPackageReference "CalendarView" */ = {
+		B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mijick/CalendarView.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B27A2E9B2CA2B68800EF639C /* MijickCalendarView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */;
+			productName = MijickCalendarView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */ = {
