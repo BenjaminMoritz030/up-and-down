@@ -14,8 +14,8 @@ struct CheckInView: View {
     @State private var mood: String = "Medium"
     @State private var drive: String = "Medium"
     
-    @State private var showMoodPicker = false  // Steuert, ob das Mood Picker Sheet angezeigt wird
-    @State private var showDrivePicker = false  // Steuert, ob das Drive Picker Sheet angezeigt wird
+    @State private var showMoodPicker = false
+    @State private var showDrivePicker = false
     
     let moods = ["Very Good", "Bad", "Medium", "Good", "Very Bad"]
     let drives = ["Very Low", "Low", "Medium", "High", "Very High"]
@@ -23,10 +23,10 @@ struct CheckInView: View {
     var body: some View {
         NavigationStack {
             Text("How do you feel today?")
-                .font(.title)
+                .font(.system(size: 30, weight: .bold))
+                .padding()
                 
-            VStack {
-                // Kleiner Mood Picker (als Button dargestellt)
+            VStack(alignment: .leading, spacing: 20) {
                 Section(header: Text("HOW IS YOUR MOOD?")) {
                     Button(action: {
                         showMoodPicker.toggle()
@@ -34,13 +34,11 @@ struct CheckInView: View {
                         HStack {
                             Text("Mood:")
                             Spacer()
-                            Text(mood)  // Aktueller Mood-Wert
+                            Text(mood)
                                 .foregroundColor(.gray)
                         }
-                        .padding()
                     }
                     .sheet(isPresented: $showMoodPicker) {
-                        // Vollbild Picker für Stimmung
                         VStack {
                             Text("Select your Mood")
                                 .font(.headline)
@@ -60,7 +58,6 @@ struct CheckInView: View {
                     }
                 }
                 
-                // Kleiner Drive Picker (als Button dargestellt)
                 Section(header: Text("HOW IS YOUR DRIVE?")) {
                     Button(action: {
                         showDrivePicker.toggle()
@@ -68,13 +65,12 @@ struct CheckInView: View {
                         HStack {
                             Text("Drive:")
                             Spacer()
-                            Text(drive)  // Aktueller Drive-Wert
+                            Text(drive)
                                 .foregroundColor(.gray)
                         }
-                        .padding()
                     }
                     .sheet(isPresented: $showDrivePicker) {
-                        // Vollbild Picker für Antrieb
+                        
                         VStack {
                             Text("Select your Drive")
                                 .font(.headline)
@@ -95,7 +91,6 @@ struct CheckInView: View {
                 }
             }
             
-            
             NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive))) {
                 Text("Suggest Activities")
                     .font(.headline)
@@ -104,8 +99,10 @@ struct CheckInView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+            .padding(.top, 50)
         }
         .navigationTitle("Check In")
+        .padding()
     }
 }
 

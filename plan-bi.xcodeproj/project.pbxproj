@@ -23,6 +23,7 @@
 		B27A2E932CA20A2500EF639C /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E922CA20A2500EF639C /* CalenderView.swift */; };
 		B27A2E962CA2129600EF639C /* CheckInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E952CA2129600EF639C /* CheckInFlowView.swift */; };
 		B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = B27A2E9B2CA2B68800EF639C /* MijickCalendarView */; };
+		B297E5702CA30219007BB324 /* Affirmations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297E56F2CA30219007BB324 /* Affirmations.swift */; };
 		B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */; };
 		B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */; };
 		B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C4981C2C9C48B10030F8EA /* Activities.json */; };
@@ -69,6 +70,7 @@
 		B25BC43A2C91FC10006E54CC /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
 		B27A2E922CA20A2500EF639C /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		B27A2E952CA2129600EF639C /* CheckInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInFlowView.swift; sourceTree = "<group>"; };
+		B297E56F2CA30219007BB324 /* Affirmations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmations.swift; sourceTree = "<group>"; };
 		B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySheetView.swift; sourceTree = "<group>"; };
 		B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		B2C4981C2C9C48B10030F8EA /* Activities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Activities.json; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B2C498272C9C59440030F8EA /* New Folder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "New Folder"; sourceTree = "<group>"; };
+		B2C498272C9C59440030F8EA /* Utilities */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utilities; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */,
 				B2C498252C9C54E10030F8EA /* Activities.swift */,
+				B297E56F2CA30219007BB324 /* Affirmations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 		B24A19B32C9436A3006215EA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B2C498272C9C59440030F8EA /* New Folder */,
+				B2C498272C9C59440030F8EA /* Utilities */,
 				B2C498212C9C531B0030F8EA /* FileManager.swift */,
 				B24A19B72C9577CD006215EA /* CoreData */,
 				B24A19B12C9435B5006215EA /* Models */,
@@ -246,7 +249,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B2C498272C9C59440030F8EA /* New Folder */,
+				B2C498272C9C59440030F8EA /* Utilities */,
 			);
 			name = "plan-bi";
 			productName = "plan-bi";
@@ -383,6 +386,7 @@
 				B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */,
 				B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */,
 				B24A19BA2C9578DC006215EA /* PersistentStore.swift in Sources */,
+				B297E5702CA30219007BB324 /* Affirmations.swift in Sources */,
 				B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

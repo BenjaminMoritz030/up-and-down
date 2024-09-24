@@ -11,6 +11,25 @@ import CoreData
 class ActivityViewModel: ObservableObject {
 
     @Published var activities: [ActivityEntity] = []
+    @Published private(set) var affirmations = [Affirmations]()
+    
+    private let repository = AffirmationsRepository()
+
+    @MainActor
+    func load() {
+        // Für die Abfrage starten wir einen "Task", also eine "Hintergrund-Aufgabe",
+        // die parallel zum restlichen Programm die Abfrage ausführt
+        Task {
+            // Da die Funktion 'fetchAlbums' als 'throws' deklariert ist, wird sie mit "do/try/catch" ausgeführt
+            do {
+                // Hier wird aus dem Hintergrund-Task heraus die UI aktualisiert.
+                // Das ist nur erlaubt, wenn die aufrufende Methode als `@MainActor` markiert ist
+                self.affirmations = try await self.repository.fetchAffirmations(endpoint: "")
+            } catch {
+                print("Request failed with error: \(error)")
+            }
+        }
+    }
 
     let container = PersistentStore.shared.context
     

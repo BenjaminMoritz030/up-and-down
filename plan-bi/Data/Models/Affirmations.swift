@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct AffirmationsResults: Codable {
+    let results: [Affirmations]
+}
+
+struct Affirmations: Codable {
+    
+    let quote: String
+    let author: String
+}
