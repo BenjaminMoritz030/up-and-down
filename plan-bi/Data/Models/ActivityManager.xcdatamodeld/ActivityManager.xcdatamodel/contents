@@ -5,6 +5,13 @@
         <attribute name="drive" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="mood" optional="YES" attributeType="String"/>
+        <attribute name="selectedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="plannedactivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlannedActivityEntity" inverseName="activity" inverseEntity="PlannedActivityEntity"/>
+    </entity>
+    <entity name="PlannedActivityEntity" representedClassName="PlannedActivityEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="activity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityEntity" inverseName="plannedactivities" inverseEntity="ActivityEntity"/>
     </entity>
 </model>

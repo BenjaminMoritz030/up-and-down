@@ -9,14 +9,15 @@ import Foundation
 import CoreData
 
 class ActivityViewModel: ObservableObject {
-
+    
+    @Published var plannedActivities: [PlannedActivityEntity] = []
     @Published var activities: [ActivityEntity] = []
-    @Published private(set) var affirmations = [Affirmations]()
+    @Published var affirmations: [Affirmations] = []
     
     private let repository = AffirmationsRepository()
-
+    
     @MainActor
-    func load() {
+    func load() async throws {
         // Für die Abfrage starten wir einen "Task", also eine "Hintergrund-Aufgabe",
         // die parallel zum restlichen Programm die Abfrage ausführt
         Task {
@@ -24,18 +25,18 @@ class ActivityViewModel: ObservableObject {
             do {
                 // Hier wird aus dem Hintergrund-Task heraus die UI aktualisiert.
                 // Das ist nur erlaubt, wenn die aufrufende Methode als `@MainActor` markiert ist
-                self.affirmations = try await self.repository.fetchAffirmations(endpoint: "")
+                self.affirmations = try await self.repository.fetchAffirmations()
             } catch {
                 print("Request failed with error: \(error)")
             }
         }
     }
-
+    
     let container = PersistentStore.shared.context
     
     init() {
         checkAndLoadActivities()
-//            clearCoreData()
+        //      clearCoreData()
     }
     
     func checkAndLoadActivities() {
@@ -94,25 +95,65 @@ class ActivityViewModel: ObservableObject {
         }
     }
     
+    func fetchPlannedActivity() {
+        let request: NSFetchRequest<PlannedActivityEntity> = PlannedActivityEntity.fetchRequest()
+        do {
+            self.plannedActivities = try container.fetch(request)
+        } catch {
+            print("Failed fetching: \(error)")
+        }
+    }
+    
+    func savePlannedActivity(date: Date, activity: ActivityEntity) {
+        // Erstelle eine neue Instanz von PlannedActivityEntity
+        let newPlannedActivity = PlannedActivityEntity(context: container)
+        newPlannedActivity.id = UUID()
+        newPlannedActivity.date = date
+        newPlannedActivity.activity = activity
+        
+        // Speichere den Kontext, um die neue Aktivität in Core Data zu persistieren
+        saveContext()
+        
+        // Füge die neue Aktivität der geplanten Aktivitäten hinzu (um die UI sofort zu aktualisieren)
+        plannedActivities.append(newPlannedActivity)
+    }
+    
     func suggestActivities(for mood: String, and drive: String) -> [ActivityEntity] {
         
         let allActivities = activities
         
-        
-        // Filtere die Aktivitäten basierend auf Stimmung (mood) und Antrieb (drive)
         let filteredActivities = allActivities.filter { activity in
             activity.mood?.lowercased() == mood.lowercased() && activity.drive?.lowercased() == drive.lowercased()
         }
         
         return filteredActivities
     }
-
+    
     private func saveContext() {
         PersistentStore.shared.save()
     }
-   
-    private func saveAndFetch() {
-        saveContext()
-        fetchActivity()
+    
+    func updatePlannedActivity(activity: PlannedActivityEntity, newDate: Date) {
+        activity.date = newDate
+        
+        do {
+            try container.save()
+            fetchPlannedActivity()
+        } catch {
+            print("Failed updating activity: \(error)")
+        }
+    }
+    
+    func deletePlannedActivity(activity: PlannedActivityEntity) {
+        container.delete(activity)
+        
+        do {
+            try container.save()
+            if let index = plannedActivities.firstIndex(of: activity) {
+                plannedActivities.remove(at: index)
+            }
+        } catch {
+            print("Failed deleting: \(error)")
+        }
     }
 }

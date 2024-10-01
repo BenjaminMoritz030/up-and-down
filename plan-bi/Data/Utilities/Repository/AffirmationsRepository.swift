@@ -8,23 +8,22 @@
 import Foundation
 
 class AffirmationsRepository {
-    
-    func fetchAffirmations(endpoint: String) async throws -> [Affirmations] {
-        // Eine URL ist immer optional, deswegen muss diese in ein guard gepackt werden
-        guard let url = URL(string: "https://api.api-ninjas.com/v1/quotes?category=happiness\(endpoint)&apiKey=JXUgOmYgvM5s3LztoGV7Og==YKUk0n2qMZdql16o") else {
-            throw HTTPError.invalidURL
-        }
-
-        // Die Funktion zum Abruf der URL wird als 'await' markiert, da auf das Ergebnis von der API gewartet wird
-        let (data, _) = try await URLSession.shared.data(from: url)
-
-        // 'JSONDecoder' wird genutzt, da wir wissen, dass ein JSON von der API zurück kommt
-        let result = try JSONDecoder().decode(AffirmationsResults.self, from: data)
-        return result.results
+  private let apiKey = "JXUgOmYgvM5s3LztoGV7Og==YKUk0n2qMZdql16o"
+  func fetchAffirmations() async throws -> [Affirmations] {
+    guard let url = URL(string: "https://api.api-ninjas.com/v1/quotes?category=happiness") else {
+      throw HTTPError.invalidURL
     }
-    
-    enum HTTPError: Error {
-        case invalidURL
-        case requestFailed
+    var request = URLRequest(url: url)
+    request.setValue(apiKey, forHTTPHeaderField: "X-Api-Key")
+    let (data, response) = try await URLSession.shared.data(for: request)
+    guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+      throw HTTPError.requestFailed
     }
+    let result = try JSONDecoder().decode([Affirmations].self, from: data)
+    return result
+  }
+  enum HTTPError: Error {
+    case invalidURL
+    case requestFailed
+  }
 }

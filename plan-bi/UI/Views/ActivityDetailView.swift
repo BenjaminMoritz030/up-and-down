@@ -8,59 +8,92 @@
 import SwiftUI
 
 struct ActivityDetailView: View {
+    
+    @StateObject var viewModel = ActivityViewModel()
+    
     var activity: ActivityEntity
     
-    var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(activity.title ?? "Keine Aktivität")
-                .font(.largeTitle)
-                .padding(.bottom)
-            
-            Text("Discription:")
-                .font(.headline)
-            Text(activity.details ?? "Keine Details vorhanden")
-            
-            Spacer()
-        }
-        .padding()
-        .navigationTitle("Details of Your Activity")
-    }
-}
-
-struct ActivityDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Erstellen Sie eine "Fake"-Instanz von ActivityEntity ohne Core Data
-        let activity = ActivityEntityPreview(title: "Plan Your Week", details: "Take time to plan your upcoming week.")
-        
-        // Rückgabe der Detailansicht mit der Vorschau-Instanz
-        return ActivityDetailViewPreview(activity: activity)
-    }
-}
-
-// Dummy ActivityEntity Preview-Modell
-struct ActivityEntityPreview {
-    var title: String?
-    var details: String?
-}
-
-// Vorschau-spezifische View ohne Core Data-Abhängigkeit
-struct ActivityDetailViewPreview: View {
-    var activity: ActivityEntityPreview
+    @State private var changeColors = false
+    @State private var showDatePicker = false
+    @State private var selectedDate: Date = Date()
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(activity.title ?? "Keine Aktivität")
-                .font(.largeTitle)
-                .padding(.bottom)
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: changeColors ? [Color.green, Color.orange] : [Color.orange, Color.green]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.top)
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
+                    changeColors.toggle()
+                }
+            }
             
-            Text("Discription:")
-                .font(.headline)
-            Text(activity.details ?? "Keine Details vorhanden")
             
-            Spacer()
+            VStack {
+                Text(activity.title ?? "No Title")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .padding()
+                
+                
+                Text(activity.details ?? "No Details")
+                    .font(.body)
+                    .foregroundColor(.black)
+                    .padding()
+                
+                Spacer()
+                
+                Button(action: {
+                    showDatePicker.toggle()
+                }) {
+                    HStack {
+                        Text("Set Date")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.white)
+                        //                    Spacer()
+                        Text("\(selectedDate, formatter: dateFormatter)")
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .background(Color.purple)
+                    .cornerRadius(10)
+                }
+                .sheet(isPresented: $showDatePicker) {
+                    VStack {
+                        DatePicker(
+                            "Select Date",
+                            selection: $selectedDate,
+                            displayedComponents: [.date]
+                        )
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .padding()
+                        
+                        Button("Save Date") {
+                            viewModel.savePlannedActivity(date: selectedDate, activity: activity)
+                            showDatePicker = false
+                        }
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    }
+                }
+            }
+            .padding()
         }
-        .padding()
-        .navigationTitle("Aktivitätsdetails")
     }
 }
 
+// Formatter für die Datumsausgabe
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}()
+
+#Preview {
+    ActivityDetailView(activity: ActivityEntity(context: PersistentStore.shared.context))
+}

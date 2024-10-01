@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct StartView: View {
+    
+    @StateObject var viewModel = ActivityViewModel()
+    
+    @State private var changeColors = false
     // Aktuelles Datum generieren
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -15,20 +20,38 @@ struct StartView: View {
         return formatter
     }()
     
+    private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         
         NavigationStack {
             ZStack {
                 
-                RadialGradient(gradient: Gradient(colors: [Color.yellow, Color.purple]), center: .center, startRadius: 20, endRadius: 800)
-                    .edgesIgnoringSafeArea(.all)
+                LinearGradient(
+                    gradient: Gradient(colors: changeColors ? [ Color.green, Color.orange] : [Color.purple, Color.yellow]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .onReceive(timer) { _ in
+                    withAnimation(.easeInOut(duration: 3)) {
+                        changeColors.toggle()
+                    }
+                }
+                .edgesIgnoringSafeArea(.top)
+                
                 
                 VStack {
                     
-                    Image("pb-logo")
+                    Image("pb-logo-neu-fff")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 80, height: 80)
+                        .frame(width: 100, height: 100)
+                        .padding()
+                    
+                    //                    Divider()
+                    //                        .frame(height: 2)
+                    //                        .background(Color.white)
+                    //                        .padding(.horizontal, 20)
                     
                     Text(dateFormatter.string(from: Date()))
                     // Aktuelles Datum anzeigen
@@ -38,41 +61,37 @@ struct StartView: View {
                     
                     
                     Text("Take a deep breath, no need to worry. Let's plan your day together.")
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.custom("Supreme Variable", size: 30))
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
-                        .padding(.bottom, 50)
+                        .padding(.bottom, 20)
                         .padding(.horizontal, 40)
                     
-                    Text("Affirmation here ...")
-                        .font(.system(size: 20, weight: .bold))
-                        .multilineTextAlignment(.center)
+                    Divider()
+                        .frame(height: 2)
+                        .background(Color.white)
+                        .padding(.horizontal, 20)
                         .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.cyan, lineWidth: 2))
-                        .padding(.horizontal, 40)
-                        .foregroundColor(.cyan)
                     
-                    
-                    
-                    VStack{
-                        
-                        NavigationLink(destination: CheckInView()) {
-                            Text("Check In")
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.cyan)
-                                .cornerRadius(10)
-                        }
-                        .padding(.horizontal)
-                        
-                        Spacer()
-                        
+                    ForEach(viewModel.affirmations, id: \.self) { affirmation in
+                        Text(affirmation.quote)
+                            .font(.system(size: 20, weight: .medium))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.purple, lineWidth: 2))
+                            .foregroundColor(.purple)
+                            .padding()
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 280)
+                    
+                    Spacer()
+                    
+                }
+            }
+            .onAppear {
+                Task {
+                    try await viewModel.load()
                 }
             }
         }

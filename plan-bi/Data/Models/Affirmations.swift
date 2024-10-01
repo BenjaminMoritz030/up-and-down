@@ -11,7 +11,7 @@ struct AffirmationsResults: Codable {
     let results: [Affirmations]
 }
 
-struct Affirmations: Codable {
+struct Affirmations: Codable, Hashable {
     
     let quote: String
     let author: String

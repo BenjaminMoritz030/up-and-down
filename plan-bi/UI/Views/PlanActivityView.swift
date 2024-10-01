@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlanActivityView: View {
     
-    var activity: ActivityEntityPreview
+    var activity: ActivityEntity
     
     @Binding var selectedDate: Date
     @State private var activitySaved = false
@@ -57,7 +57,5 @@ struct PlanActivityView: View {
 
 
 #Preview {
-    @Previewable @State var selectedDate = Date()  // Dummy-Date für die Vorschau
-    let dummyActivity = ActivityEntityPreview(title: "Yoga Session", details: "Relaxing yoga session for 20 minutes.")
-    return PlanActivityView(activity: dummyActivity, selectedDate: $selectedDate)
+    PlanActivityView(activity: ActivityEntity(context: PersistentStore.shared.context), selectedDate: .constant(Date()))
 }

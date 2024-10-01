@@ -11,101 +11,174 @@ struct CheckInView: View {
     
     @StateObject var viewModel = ActivityViewModel()
     
+    @State private var changeColors = false
+    @State private var isAnimating = false
+    
     @State private var mood: String = "Medium"
     @State private var drive: String = "Medium"
     
     @State private var showMoodPicker = false
     @State private var showDrivePicker = false
     
-    let moods = ["Very Good", "Bad", "Medium", "Good", "Very Bad"]
+    let moods = ["Very Bad", "Bad", "Medium", "Good", "Very Good"]
     let drives = ["Very Low", "Low", "Medium", "High", "Very High"]
     
     var body: some View {
         NavigationStack {
-            Text("How do you feel today?")
-                .font(.system(size: 30, weight: .bold))
-                .padding()
+            ZStack {
+                // Gradient-Hintergrund über die gesamte Höhe, ohne die TabView zu verdecken
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.green, Color.blue, Color.orange]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea(edges: .top) // Nur die oberen Kanten ignorieren
                 
-            VStack(alignment: .leading, spacing: 20) {
-                Section(header: Text("HOW IS YOUR MOOD?")) {
-                    Button(action: {
-                        showMoodPicker.toggle()
-                    }) {
-                        HStack {
-                            Text("Mood:")
-                            Spacer()
-                            Text(mood)
-                                .foregroundColor(.gray)
+                VStack {
+                    Image("pb-logo-neu-fff")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .padding()
+                        .rotationEffect(.degrees(isAnimating ? 360 : 0))
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 6).repeatForever(autoreverses: false)) {
+                                isAnimating = true
+                            }
                         }
-                    }
-                    .sheet(isPresented: $showMoodPicker) {
-                        VStack {
-                            Text("Select your Mood")
-                                .font(.headline)
-                                .padding()
-                            Picker("Mood", selection: $mood) {
-                                ForEach(moods, id: \.self) {
-                                    Text($0)
+                    
+                    Spacer()
+                    
+                    Text("Tell me, how do you feel today?")
+                        .font(.custom("Supreme Variable", size: 30))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 20)
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 20) {
+                        Section(header: Text("Select your mood"))
+                        {
+                            Button(action: {
+                                showMoodPicker.toggle()
+                            }) {
+                                HStack {
+                                    Text("Mood:")
+                                    Spacer()
+                                    Text(mood)
+                                        .foregroundColor(.white)
+                                }
+                                .font(.system(size: 20))
+                            }
+                            .sheet(isPresented: $showMoodPicker) {
+                                VStack {
+                                    Text("Your mood is like the weather. Always changing, and that’s okay. Embrace each moment as it comes, knowing you are perfectly fine just as you are.")
+                                        .font(.custom("Supreme Variable", size: 30))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.purple)
+                                        .padding()
+                                    
+                                    Divider()
+                                        .frame(height: 2)
+                                        .background(Color.purple)
+                                        .padding(.horizontal, 20)
+                                    
+                                    Picker("Mood", selection: $mood) {
+                                        ForEach(moods, id: \.self) {
+                                            Text($0)
+                                                .font(.system(size: 20, weight: .bold))
+                                                .foregroundColor(.purple)
+                                        }
+                                    }
+                                    .labelsHidden()
+                                    .pickerStyle(WheelPickerStyle())
+                                    Button("Done") {
+                                        showMoodPicker = false
+                                    }
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.purple)
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 20)
                                 }
                             }
-                            .labelsHidden()
-                            .pickerStyle(WheelPickerStyle())
-                            Button("Done") {
-                                showMoodPicker = false
-                            }
-                            .padding()
                         }
-                    }
-                }
-                
-                Section(header: Text("HOW IS YOUR DRIVE?")) {
-                    Button(action: {
-                        showDrivePicker.toggle()
-                    }) {
-                        HStack {
-                            Text("Drive:")
-                            Spacer()
-                            Text(drive)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .sheet(isPresented: $showDrivePicker) {
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
                         
-                        VStack {
-                            Text("Select your Drive")
-                                .font(.headline)
-                                .padding()
-                            Picker("Drive", selection: $drive) {
-                                ForEach(drives, id: \.self) {
-                                    Text($0)
+                        Section(header: Text("Select your drive")) {
+                            Button(action: {
+                                showDrivePicker.toggle()
+                            }) {
+                                HStack {
+                                    Text("Drive:")
+                                    Spacer()
+                                    Text(drive)
+                                        .foregroundColor(.white)
+                                }
+                                .font(.system(size: 20))
+                            }
+                            .sheet(isPresented: $showDrivePicker) {
+                                ZStack {
+                                    Color.white
+                                        .ignoresSafeArea()
+                                    VStack {
+                                        Text("Move gently through today. Be kind to yourself, and trust the process.")
+                                            .font(.custom("Supreme Variable", size: 30))
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(.purple)
+                                            .padding()
+                                        
+                                        Divider()
+                                            .frame(height: 2)
+                                            .background(Color.purple)
+                                            .padding(.horizontal, 20)
+                                        
+                                        Picker("Drive", selection: $drive) {
+                                            ForEach(drives, id: \.self) {
+                                                Text($0)
+                                                    .font(.system(size: 20, weight: .bold))
+                                                    .foregroundColor(.purple)
+                                            }
+                                        }
+                                        .labelsHidden()
+                                        .pickerStyle(WheelPickerStyle())
+                                        Button("Done") {
+                                            showDrivePicker = false
+                                        }
+                                        .font(.system(size: 20, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.purple)
+                                        .cornerRadius(10)
+                                        .padding(.horizontal, 20)
+                                    }
                                 }
                             }
-                            .labelsHidden()
-                            .pickerStyle(WheelPickerStyle())
-                            Button("Done") {
-                                showDrivePicker = false
-                            }
-                            .padding()
                         }
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
                     }
+                    
+                    NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive))) {
+                        Text("Suggest Activities")
+                            .font(.system(size: 20, weight: .bold))
+                            .padding()
+                            .background(Color.purple)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top, 50)
                 }
+                .padding()
             }
-            
-            NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive))) {
-                Text("Suggest Activities")
-                    .font(.headline)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding(.top, 50)
         }
-        .navigationTitle("Check In")
-        .padding()
     }
 }
-
 
 #Preview {
     CheckInView()

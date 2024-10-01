@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var activityViewModel = ActivityViewModel()
+    @State private var selectedDate: Date = Date()
+    
+    
     var body: some View {
         TabView {
             StartView()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
-            }
+                }
             
-            CheckInFlowView()
+            CheckInView()
                 .tabItem {
                     Label("Check In", systemImage: "apple.meditate")
                 }
             
-            ActivitiesView()
+            CalenderView(viewModel: activityViewModel, selectedDate: $selectedDate)
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }
@@ -28,6 +33,7 @@ struct ContentView: View {
         .tint(.primary)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
