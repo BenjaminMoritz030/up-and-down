@@ -19,6 +19,7 @@ struct StartView: View {
         formatter.dateFormat = "EEEE, d. MMMM yyyy"
         return formatter
     }()
+
     
     private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
     
