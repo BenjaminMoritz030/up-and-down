@@ -12,66 +12,83 @@ struct CalenderView: View {
     @Binding var selectedDate: Date
     
     var body: some View {
-        VStack {
-            Text("Geplante Aktivitäten")
-                .font(.largeTitle)
-                .padding()
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.purple, Color.blue]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
             
-            List {
-                ForEach(viewModel.plannedActivities, id: \.id) { activity in
-                    HStack {
-//                        Text("Datum:")
-                        Spacer()
-                        if let date = activity.date {
-                            Text("\(date, formatter: dateFormatter)")
-                                .onTapGesture {
-                                    selectedDate = date
-                                }
-                        } else {
-                            Text("Kein Datum")
+            VStack {
+                Text("Your planned activities")
+                    .font(.largeTitle)
+                    .foregroundStyle(.white)
+                    .padding()
+                
+                List {
+                    ForEach(viewModel.plannedActivities, id: \.id) { activity in
+                        HStack {
+                            
+                            Spacer()
+                            
+                                                       
+                            //  if viewModel.plannedActivities.isEmpty {
+                            //                                                Text("No planned activities found yet. Please go to Check In.")
+//                                    .font(.headline)
+//                                    .foregroundColor(.white)
+//                                    .padding()
+                            //   } else
+                            
+                            if let date = activity.date {
+                                Text("\(date, formatter: dateFormatter)")
+                                    .onTapGesture {
+                                        selectedDate = date
+                                    }
+                            } else {
+                                Text("No date")
+                            }
+                            
+                            // DatePicker zum Aktualisieren des Datums
+                            DatePicker(
+                                "Edit date",
+                                selection: Binding(
+                                    get: {
+                                        activity.date ?? Date()
+                                    },
+                                    set: { newDate in
+                                        viewModel.updatePlannedActivity(activity: activity, newDate: newDate)
+                                    }
+                                ),
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(CompactDatePickerStyle())
+                            .padding(.vertical)
+                            
+                            if let activityTitle = activity.activity?.title {
+                                Text("\(activityTitle)")
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text("No activity")
+                                    .foregroundColor(.red)
+                            }
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                viewModel.deletePlannedActivity(activity: activity)
+                            }) {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
                         }
-                        
-                        // DatePicker zum Aktualisieren des Datums
-                                                DatePicker(
-                                                    "Neues Datum",
-                                                    selection: Binding(
-                                                        get: {
-                                                            activity.date ?? Date()
-                                                        },
-                                                        set: { newDate in
-                                                            // Aufruf der Update-Funktion aus dem ViewModel
-                                                            viewModel.updatePlannedActivity(activity: activity, newDate: newDate)
-                                                        }
-                                                    ),
-                                                    displayedComponents: [.date]
-                                                )
-                                                .datePickerStyle(CompactDatePickerStyle())
-                                                .padding(.vertical)
-                        
-                        // Anzeige der zugehörigen Aktivität
-                                                if let activityTitle = activity.activity?.title {
-                                                    Text("\(activityTitle)")
-                                                        .foregroundColor(.gray)
-                                                } else {
-                                                    Text("Keine Aktivität")
-                                                        .foregroundColor(.red)
-                                                }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            viewModel.deletePlannedActivity(activity: activity)
-                        }) {
-                            Image(systemName: "trash")
-                                .foregroundColor(.red)
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
                     }
                 }
             }
-        }
-        .onAppear {
-            viewModel.fetchPlannedActivity()
+            .onAppear {
+                viewModel.fetchPlannedActivity()
+            }
         }
     }
 }
@@ -85,6 +102,3 @@ private let dateFormatter: DateFormatter = {
 #Preview {
     CalenderView(viewModel: ActivityViewModel(), selectedDate: .constant(Date()))
 }
-
-
-

@@ -22,7 +22,8 @@ struct ContentView: View {
             
             CheckInView()
                 .tabItem {
-                    Label("Check In", systemImage: "apple.meditate")
+//                    Label("Check In", systemImage: "apple.meditate")
+                    Label("Check In", systemImage: "door.left.hand.open")
                 }
             
             CalenderView(viewModel: activityViewModel, selectedDate: $selectedDate)

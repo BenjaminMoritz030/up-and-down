@@ -19,7 +19,6 @@ struct StartView: View {
         formatter.dateFormat = "EEEE, d. MMMM yyyy"
         return formatter
     }()
-
     
     private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
     
@@ -27,7 +26,6 @@ struct StartView: View {
         
         NavigationStack {
             ZStack {
-                
                 LinearGradient(
                     gradient: Gradient(colors: changeColors ? [ Color.green, Color.orange] : [Color.purple, Color.yellow]),
                     startPoint: .top,
@@ -49,13 +47,7 @@ struct StartView: View {
                         .frame(width: 100, height: 100)
                         .padding()
                     
-                    //                    Divider()
-                    //                        .frame(height: 2)
-                    //                        .background(Color.white)
-                    //                        .padding(.horizontal, 20)
-                    
                     Text(dateFormatter.string(from: Date()))
-                    // Aktuelles Datum anzeigen
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.white)
                         .padding()
@@ -86,7 +78,18 @@ struct StartView: View {
                             .padding()
                     }
                     
+                    Text("Don't hesitate, go to the waiting room and check in.")
+                        .font(.system(size: 24, weight: .medium))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    
+                    Image(systemName: "square.and.arrow.uparrowshape.down")
+                        .foregroundColor(.white)
+                    
                     Spacer()
+                    
+                    
                     
                 }
             }
