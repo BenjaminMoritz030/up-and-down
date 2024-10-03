@@ -22,6 +22,8 @@ struct StartView: View {
     
     private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
     
+    
+    
     var body: some View {
         
         NavigationStack {
