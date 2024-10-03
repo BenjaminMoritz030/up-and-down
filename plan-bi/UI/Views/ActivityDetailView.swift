@@ -24,7 +24,7 @@ struct ActivityDetailView: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
-            .edgesIgnoringSafeArea(.top)
+            .ignoresSafeArea(edges: .top)
             .onAppear {
                 withAnimation(Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
                     changeColors.toggle()
@@ -76,7 +76,7 @@ struct ActivityDetailView: View {
                             showDatePicker = false
                         }
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.purple)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }

@@ -138,6 +138,7 @@ class ActivityViewModel: ObservableObject {
         
         do {
             try container.save()
+            print("Date updated successfully: \(newDate)")
             fetchPlannedActivity()
         } catch {
             print("Failed updating activity: \(error)")

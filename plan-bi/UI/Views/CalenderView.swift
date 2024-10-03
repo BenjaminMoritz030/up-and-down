@@ -9,7 +9,10 @@ import SwiftUI
 
 struct CalenderView: View {
     @ObservedObject var viewModel: ActivityViewModel
+    
     @Binding var selectedDate: Date
+    @State private var showingSheet = false
+    @State private var selectedActivity: PlannedActivityEntity?
     
     var body: some View {
         ZStack {
@@ -26,79 +29,102 @@ struct CalenderView: View {
                     .foregroundStyle(.white)
                     .padding()
                 
-                List {
-                    ForEach(viewModel.plannedActivities, id: \.id) { activity in
-                        HStack {
-                            
-                            Spacer()
-                            
-                                                       
-                            //  if viewModel.plannedActivities.isEmpty {
-                            //                                                Text("No planned activities found yet. Please go to Check In.")
-//                                    .font(.headline)
-//                                    .foregroundColor(.white)
-//                                    .padding()
-                            //   } else
-                            
-                            if let date = activity.date {
-                                Text("\(date, formatter: dateFormatter)")
-                                    .onTapGesture {
-                                        selectedDate = date
+//                if viewModel.plannedActivities.isEmpty {
+//                    Text("No planned activities available.")
+//                        .foregroundColor(.white)
+//                        .padding()
+//                } else {
+                    
+                    List {
+                        ForEach(sortedActivitiesByDate, id: \.id) { activity in
+                            HStack {
+                                if let date = activity.date {
+                                    Text("\(date, formatter: dateFormatter)")
+                                        .onTapGesture {
+                                            selectedDate = date
+                                        }
+                                } else {
+                                    Text("No date")
+                                }
+                                
+                                if let activityTitle = activity.activity?.title {
+                                    Text("\(activityTitle)")
+                                        .foregroundColor(.gray)
+                                } else {
+                                    Text("No activity")
+                                        .foregroundColor(.red)
+                                }
+                                
+                                Spacer()
+                            }
+                            .swipeActions(allowsFullSwipe: false) {
+                                Button(action: {
+                                    viewModel.deletePlannedActivity(activity: activity)
+                                }) {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                }
+                                
+                                Button(action: {
+                                    selectedActivity = activity
+                                    if let activityDate = activity.date {
+                                        selectedDate = activityDate
+                                    } else {
+                                        selectedDate = Date()
                                     }
-                            } else {
-                                Text("No date")
+                                    showingSheet.toggle()
+                                }) {
+                                    Image(systemName: "pencil")
+                                        .foregroundColor(.blue)
+                                }
                             }
-                            
-                            // DatePicker zum Aktualisieren des Datums
-                            DatePicker(
-                                "Edit date",
-                                selection: Binding(
-                                    get: {
-                                        activity.date ?? Date()
-                                    },
-                                    set: { newDate in
-                                        viewModel.updatePlannedActivity(activity: activity, newDate: newDate)
-                                    }
-                                ),
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(CompactDatePickerStyle())
-                            .padding(.vertical)
-                            
-                            if let activityTitle = activity.activity?.title {
-                                Text("\(activityTitle)")
-                                    .foregroundColor(.gray)
-                            } else {
-                                Text("No activity")
-                                    .foregroundColor(.red)
-                            }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                viewModel.deletePlannedActivity(activity: activity)
-                            }) {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                            }
-                            .buttonStyle(BorderlessButtonStyle())
                         }
                     }
+                    .listStyle(SidebarListStyle())
                 }
-            }
-            .onAppear {
-                viewModel.fetchPlannedActivity()
+                    .onAppear {
+                        viewModel.fetchPlannedActivity()
+                    }
+                    .sheet(isPresented: $showingSheet) {
+                        if let selectedActivity = selectedActivity {
+                            VStack {
+                                DatePicker("Select Date", selection: $selectedDate, displayedComponents: [.date])
+                                    .datePickerStyle(GraphicalDatePickerStyle())
+                                    .padding()
+                                
+                                Button("Edit Date") {
+                                    viewModel.updatePlannedActivity(activity: selectedActivity, newDate: selectedDate)
+                                    print("Saving date: \(selectedDate)")
+                                    showingSheet = false
+                                }
+                                .padding()
+                                .background(Color.purple)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                            }
+                            .padding()
+                        } else {
+                            Text("No activity selected")
+                        }
+                    }
             }
         }
+        
+        private var sortedActivitiesByDate: [PlannedActivityEntity] {
+            return viewModel.plannedActivities
+                .sorted {
+                    ($0.date ?? Date()) < ($1.date ?? Date())
+                }
+        }
     }
-}
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()
-
-#Preview {
-    CalenderView(viewModel: ActivityViewModel(), selectedDate: .constant(Date()))
-}
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+    
+    #Preview {
+        CalenderView(viewModel: ActivityViewModel(), selectedDate: .constant(Date()))
+    }
+    

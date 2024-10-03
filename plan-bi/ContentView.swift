@@ -12,7 +12,6 @@ struct ContentView: View {
     @StateObject var activityViewModel = ActivityViewModel()
     @State private var selectedDate: Date = Date()
     
-    
     var body: some View {
         TabView {
             StartView()
@@ -24,11 +23,6 @@ struct ContentView: View {
                 .tabItem {
 //                    Label("Check In", systemImage: "apple.meditate")
                     Label("Check In", systemImage: "door.left.hand.open")
-                }
-            
-            CalenderView(viewModel: activityViewModel, selectedDate: $selectedDate)
-                .tabItem {
-                    Label("Calendar", systemImage: "calendar")
                 }
         }
         .tint(.primary)
