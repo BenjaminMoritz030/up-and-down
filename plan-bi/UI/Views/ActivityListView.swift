@@ -10,7 +10,15 @@ import SwiftUI
 struct ActivityListView: View {
     @State private var changeColors = false
     var activities: [ActivityEntity]
-    
+    var filteredMood: String
+    var filteredDrive: String
+
+    var filteredActivities: [ActivityEntity] {
+        return activities.filter { activity in
+            (activity.mood == filteredMood) && (activity.drive == filteredDrive)
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -33,23 +41,31 @@ struct ActivityListView: View {
                         .multilineTextAlignment(.center)
                         .padding()
 
-                    List {
-                        ForEach(activities, id: \.self) { activity in
-                            NavigationLink(destination: ActivityDetailView(activity: activity)) {
-                                Text(activity.title ?? "Sorry, no title available.")
-                                    .font(.system(size: 24, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color.purple)
-                                    .cornerRadius(10)
+                    if filteredActivities.isEmpty {
+                        Text("Sorry, no activities match your mood and drive combination.")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                    } else {
+                        List {
+                            ForEach(filteredActivities, id: \.self) { activity in
+                                NavigationLink(destination: ActivityDetailView(activity: activity)) {
+                                    Text(activity.title ?? "Sorry, no title available.")
+                                        .font(.system(size: 24, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.purple)
+                                        .cornerRadius(10)
+                                }
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                            .padding(.horizontal, 10)
                         }
-                        .padding(.horizontal, 10)
+                        .scrollContentBackground(.hidden)
                     }
-                    .scrollContentBackground(.hidden)
                 }
                 .padding()
             }
@@ -58,7 +74,5 @@ struct ActivityListView: View {
 }
 
 #Preview {
-    ActivityListView(activities: [])
+    ActivityListView(activities: [], filteredMood: "Good", filteredDrive: "High")
 }
-
-

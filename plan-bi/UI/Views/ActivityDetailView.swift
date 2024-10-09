@@ -16,6 +16,7 @@ struct ActivityDetailView: View {
     @State private var changeColors = false
     @State private var showDatePicker = false
     @State private var selectedDate: Date = Date()
+    @State private var showAlert = false
     
     var body: some View {
         ZStack {
@@ -31,13 +32,11 @@ struct ActivityDetailView: View {
                 }
             }
             
-            
             VStack {
                 Text(activity.title ?? "No Title")
                     .font(.largeTitle)
                     .foregroundColor(.black)
                     .padding()
-                
                 
                 Text(activity.details ?? "No Details")
                     .font(.body)
@@ -53,7 +52,6 @@ struct ActivityDetailView: View {
                         Text("Set Date")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
-                        //                    Spacer()
                         Text("\(selectedDate, formatter: dateFormatter)")
                             .foregroundColor(.white)
                     }
@@ -74,20 +72,28 @@ struct ActivityDetailView: View {
                         Button("Save Date") {
                             viewModel.savePlannedActivity(date: selectedDate, activity: activity)
                             showDatePicker = false
+                            showAlert = true
                         }
                         .padding()
                         .background(Color.purple)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                        .frame(maxWidth: .infinity)
                     }
                 }
             }
             .padding()
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Activity Saved"),
+                    message: Text("Your activity has been saved. You can view it in your calendar."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
 
-// Formatter für die Datumsausgabe
 private let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
@@ -97,3 +103,4 @@ private let dateFormatter: DateFormatter = {
 #Preview {
     ActivityDetailView(activity: ActivityEntity(context: PersistentStore.shared.context))
 }
+

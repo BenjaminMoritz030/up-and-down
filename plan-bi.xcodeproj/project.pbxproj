@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B201A0712CA1F66400B30F2E /* PlanActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B201A0702CA1F66400B30F2E /* PlanActivityView.swift */; };
 		B2110CF62C60B8830087E467 /* plan_biApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110CF52C60B8830087E467 /* plan_biApp.swift */; };
 		B2110CF82C60B8830087E467 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2110CF72C60B8830087E467 /* ContentView.swift */; };
 		B2110CFA2C60B8850087E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2110CF92C60B8850087E467 /* Assets.xcassets */; };
@@ -18,14 +17,10 @@
 		B24A19BA2C9578DC006215EA /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A19B92C9578DC006215EA /* PersistentStore.swift */; };
 		B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24A19C42C957C85006215EA /* ActivityListView.swift */; };
 		B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */; };
-		B25BC4392C91FB77006E54CC /* ActivitySuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */; };
 		B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC43A2C91FC10006E54CC /* CheckInView.swift */; };
-		B27168C32CA9E0B40014995F /* PlannedActivitiy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27168C22CA9E0B40014995F /* PlannedActivitiy.swift */; };
 		B27A2E932CA20A2500EF639C /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E922CA20A2500EF639C /* CalenderView.swift */; };
 		B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = B27A2E9B2CA2B68800EF639C /* MijickCalendarView */; };
 		B297E5702CA30219007BB324 /* Affirmations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297E56F2CA30219007BB324 /* Affirmations.swift */; };
-		B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */; };
-		B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */; };
 		B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C4981C2C9C48B10030F8EA /* Activities.json */; };
 		B2C498202C9C49860030F8EA /* ActivityManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */; };
 		B2C498222C9C531B0030F8EA /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C498212C9C531B0030F8EA /* FileManager.swift */; };
@@ -52,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B201A0702CA1F66400B30F2E /* PlanActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanActivityView.swift; sourceTree = "<group>"; };
 		B2110CF22C60B8830087E467 /* plan-bi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "plan-bi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2110CF52C60B8830087E467 /* plan_biApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plan_biApp.swift; sourceTree = "<group>"; };
 		B2110CF72C60B8830087E467 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,13 +61,9 @@
 		B24A19C42C957C85006215EA /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
 		B25469412CA42E64004B9A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySuggestionView.swift; sourceTree = "<group>"; };
 		B25BC43A2C91FC10006E54CC /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
-		B27168C22CA9E0B40014995F /* PlannedActivitiy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannedActivitiy.swift; sourceTree = "<group>"; };
 		B27A2E922CA20A2500EF639C /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		B297E56F2CA30219007BB324 /* Affirmations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmations.swift; sourceTree = "<group>"; };
-		B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySheetView.swift; sourceTree = "<group>"; };
-		B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		B2C4981C2C9C48B10030F8EA /* Activities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Activities.json; sourceTree = "<group>"; };
 		B2C4981F2C9C49860030F8EA /* ActivityManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityManager.xcdatamodel; sourceTree = "<group>"; };
 		B2C498212C9C531B0030F8EA /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -179,7 +169,6 @@
 				B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */,
 				B2C498252C9C54E10030F8EA /* Activities.swift */,
 				B297E56F2CA30219007BB324 /* Affirmations.swift */,
-				B27168C22CA9E0B40014995F /* PlannedActivitiy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,13 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				B2EC1B322C6212CE008370F8 /* StartView.swift */,
-				B25BC4382C91FB77006E54CC /* ActivitySuggestionView.swift */,
 				B25BC43A2C91FC10006E54CC /* CheckInView.swift */,
 				B24A19C42C957C85006215EA /* ActivityListView.swift */,
-				B2C0934B2C9AD2E600DD38C5 /* ActivitySheetView.swift */,
-				B2C0934D2C9AE6B300DD38C5 /* ActivitiesView.swift */,
 				B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */,
-				B201A0702CA1F66400B30F2E /* PlanActivityView.swift */,
 				B27A2E922CA20A2500EF639C /* CalenderView.swift */,
 			);
 			path = Views;
@@ -377,22 +362,17 @@
 			files = (
 				B2C498202C9C49860030F8EA /* ActivityManager.xcdatamodeld in Sources */,
 				B2C498262C9C54E10030F8EA /* Activities.swift in Sources */,
-				B25BC4392C91FB77006E54CC /* ActivitySuggestionView.swift in Sources */,
-				B2C0934C2C9AD2E600DD38C5 /* ActivitySheetView.swift in Sources */,
 				B2C498222C9C531B0030F8EA /* FileManager.swift in Sources */,
 				B2EC1B332C6212CE008370F8 /* StartView.swift in Sources */,
 				B27A2E932CA20A2500EF639C /* CalenderView.swift in Sources */,
 				B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */,
 				B2110CF82C60B8830087E467 /* ContentView.swift in Sources */,
 				B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */,
-				B201A0712CA1F66400B30F2E /* PlanActivityView.swift in Sources */,
 				B2110CF62C60B8830087E467 /* plan_biApp.swift in Sources */,
 				B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */,
 				B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */,
 				B24A19BA2C9578DC006215EA /* PersistentStore.swift in Sources */,
 				B297E5702CA30219007BB324 /* Affirmations.swift in Sources */,
-				B27168C32CA9E0B40014995F /* PlannedActivitiy.swift in Sources */,
-				B2C0934E2C9AE6B300DD38C5 /* ActivitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

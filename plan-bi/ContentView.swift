@@ -24,6 +24,11 @@ struct ContentView: View {
 //                    Label("Check In", systemImage: "apple.meditate")
                     Label("Check In", systemImage: "door.left.hand.open")
                 }
+            CalenderView(viewModel: activityViewModel, selectedDate: $selectedDate)
+                .tabItem {
+//                    Label("Check In", systemImage: "apple.meditate")
+                    Label("Check In", systemImage: "calendar")
+                }
         }
         .tint(.primary)
     }

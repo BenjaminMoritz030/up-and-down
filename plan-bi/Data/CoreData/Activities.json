@@ -119,6 +119,282 @@
             "details": "Organize your tasks for the week ahead.",
             "mood": "Medium",
             "drive": "Medium"
+        },
+        {
+            "title": "Gardening",
+            "details": "Plant flowers or tend to your garden.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Photography",
+            "details": "Go outside and take some photos of nature.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Play Video Games",
+            "details": "Relax with your favorite video game.",
+            "mood": "Medium",
+            "drive": "Low"
+        },
+        {
+            "title": "Take a Dance Class",
+            "details": "Learn new dance moves in a fun class.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Attend a Workshop",
+            "details": "Participate in a workshop to learn something new.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Clean Your Home",
+            "details": "Organize and tidy up your living space.",
+            "mood": "Bad",
+            "drive": "High"
+        },
+        {
+            "title": "Volunteer",
+            "details": "Help out at a local charity or organization.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Take a Road Trip",
+            "details": "Drive to a nearby city or nature spot.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Cook with Friends",
+            "details": "Gather friends and cook a meal together.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Visit a Farmer's Market",
+            "details": "Explore fresh produce and local goods.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Learn a New Language",
+            "details": "Start learning a new language online.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Take a Scenic Drive",
+            "details": "Enjoy a leisurely drive through beautiful landscapes.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Watch a Play",
+            "details": "Enjoy a local theater production.",
+            "mood": "Very Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Make a Scrapbook",
+            "details": "Create a scrapbook of your favorite memories.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Go for a Bike Ride",
+            "details": "Enjoy a bike ride around the neighborhood.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Join a Book Club",
+            "details": "Discuss books with fellow readers.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Attend a Concert",
+            "details": "Experience live music at a local venue.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Write a Short Story",
+            "details": "Express your creativity through writing.",
+            "mood": "Medium",
+            "drive": "Low"
+        },
+        {
+            "title": "Explore a New Neighborhood",
+            "details": "Take a walk and discover a new area.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Take an Online Course",
+            "details": "Learn a new skill through an online platform.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Visit the Beach",
+            "details": "Relax by the ocean and enjoy the sun.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Write a Letter",
+            "details": "Write a letter to a friend or family member.",
+            "mood": "Good",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Go Fishing",
+            "details": "Spend some quiet time fishing.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Try Meditation Apps",
+            "details": "Explore guided meditations on apps.",
+            "mood": "Medium",
+            "drive": "Low"
+        },
+        {
+            "title": "Attend a Community Event",
+            "details": "Join a local community gathering.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Take a Cooking Class",
+            "details": "Learn to cook new dishes with experts.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Do a Digital Detox",
+            "details": "Take a break from screens for a day.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Visit a Zoo",
+            "details": "Spend the day observing animals at the zoo.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Go to an Escape Room",
+            "details": "Challenge yourself and friends in an escape room.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Do Some DIY Projects",
+            "details": "Get creative with home improvement projects.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Take a Cold Shower",
+            "details": "Refresh yourself with a quick cold shower.",
+            "mood": "Medium",
+            "drive": "Very Low"
+        },
+        {
+            "title": "Write Poetry",
+            "details": "Express your feelings through poetry.",
+            "mood": "Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Do a Social Media Clean-Up",
+            "details": "Review and clean up your social media accounts.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Practice Mindfulness",
+            "details": "Focus on being present and aware.",
+            "mood": "Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Go for a Swim",
+            "details": "Enjoy a refreshing swim at a pool or beach.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Create a Vision Board",
+            "details": "Visualize your goals by creating a vision board.",
+            "mood": "Very Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Visit a Botanical Garden",
+            "details": "Explore beautiful plants and flowers.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Try Geocaching",
+            "details": "Go on a treasure hunt using GPS coordinates.",
+            "mood": "Good",
+            "drive": "High"
+        },
+        {
+            "title": "Play an Instrument",
+            "details": "Spend time practicing a musical instrument.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Explore a New Cuisine",
+            "details": "Try cooking or eating food from a different culture.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Attend a Sports Game",
+            "details": "Cheer for your favorite team at a local game.",
+            "mood": "Very Good",
+            "drive": "High"
+        },
+        {
+            "title": "Make Homemade Treats",
+            "details": "Bake cookies or other treats at home.",
+            "mood": "Good",
+            "drive": "Medium"
+        },
+        {
+            "title": "Learn to Code",
+            "details": "Start learning coding online.",
+            "mood": "Medium",
+            "drive": "Medium"
+        },
+        {
+            "title": "Practice Public Speaking",
+            "details": "Work on your public speaking skills.",
+            "mood": "Medium",
+            "drive": "High"
+        },
+        {
+            "title": "Have a Spa Day at Home",
+            "details": "Pamper yourself with a home spa day.",
+            "mood": "Very Good",
+            "drive": "Low"
+        },
+        {
+            "title": "Take a Day Off",
+            "details": "Relax and take a day off from work.",
+            "mood": "Very Good",
+            "drive": "Very Low"
         }
     ]
 }

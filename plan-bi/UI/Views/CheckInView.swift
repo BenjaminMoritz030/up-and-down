@@ -26,14 +26,12 @@ struct CheckInView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Gradient-Hintergrund über die gesamte Höhe, ohne die TabView zu verdecken
                 LinearGradient(
                     gradient: Gradient(colors: [Color.green, Color.blue, Color.orange]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
-                .ignoresSafeArea(edges: .top) // Nur die oberen Kanten ignorieren
-                
+                .ignoresSafeArea(edges: .top)
                 VStack {
                     Image("pb-logo-neu-fff")
                         .resizable()
@@ -164,13 +162,14 @@ struct CheckInView: View {
                         .foregroundColor(.white)
                     }
                     
-                    NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive))) {
+                    NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive), filteredMood: mood, filteredDrive: drive)) {
                         Text("Suggest Activities")
                             .font(.system(size: 20, weight: .bold))
                             .padding()
                             .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            .frame(maxWidth: .infinity)
                     }
                     .padding(.top, 50)
                 }

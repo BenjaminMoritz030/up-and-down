@@ -10,8 +10,8 @@ import SwiftUI
 struct CalenderView: View {
     @ObservedObject var viewModel: ActivityViewModel
     
-    @Binding var selectedDate: Date
     @State private var showingSheet = false
+    @Binding var selectedDate: Date
     @State private var selectedActivity: PlannedActivityEntity?
     
     var body: some View {
@@ -29,13 +29,12 @@ struct CalenderView: View {
                     .foregroundStyle(.white)
                     .padding()
                 
-//                if viewModel.plannedActivities.isEmpty {
-//                    Text("No planned activities available.")
-//                        .foregroundColor(.white)
-//                        .padding()
-//                } else {
-                    
-                    List {
+                List {
+                    if viewModel.plannedActivities.isEmpty {
+                        Text("No planned activities available. You have to check in.")
+                            .foregroundColor(.purple)
+                            .padding()
+                    } else {
                         ForEach(sortedActivitiesByDate, id: \.id) { activity in
                             HStack {
                                 if let date = activity.date {
@@ -49,7 +48,7 @@ struct CalenderView: View {
                                 
                                 if let activityTitle = activity.activity?.title {
                                     Text("\(activityTitle)")
-                                        .foregroundColor(.gray)
+                                        .font(.system(size: 18, weight: .bold))
                                 } else {
                                     Text("No activity")
                                         .foregroundColor(.red)
@@ -64,6 +63,7 @@ struct CalenderView: View {
                                     Image(systemName: "trash")
                                         .foregroundColor(.red)
                                 }
+                                .tint(.red)
                                 
                                 Button(action: {
                                     selectedActivity = activity
@@ -77,54 +77,59 @@ struct CalenderView: View {
                                     Image(systemName: "pencil")
                                         .foregroundColor(.blue)
                                 }
+                                .tint(.yellow)
                             }
                         }
                     }
-                    .listStyle(SidebarListStyle())
                 }
-                    .onAppear {
-                        viewModel.fetchPlannedActivity()
-                    }
-                    .sheet(isPresented: $showingSheet) {
+                .listStyle(SidebarListStyle())
+            }
+            .onAppear {
+                viewModel.fetchPlannedActivity()
+            }
+            .sheet(isPresented: $showingSheet) {
+                VStack {
+                    DatePicker(
+                        "Select Date",
+                        selection: $selectedDate,
+                        in: Date()...,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding()
+
+                    Button("Edit Date") {
                         if let selectedActivity = selectedActivity {
-                            VStack {
-                                DatePicker("Select Date", selection: $selectedDate, displayedComponents: [.date])
-                                    .datePickerStyle(GraphicalDatePickerStyle())
-                                    .padding()
-                                
-                                Button("Edit Date") {
-                                    viewModel.updatePlannedActivity(activity: selectedActivity, newDate: selectedDate)
-                                    print("Saving date: \(selectedDate)")
-                                    showingSheet = false
-                                }
-                                .padding()
-                                .background(Color.purple)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                            }
-                            .padding()
-                        } else {
-                            Text("No activity selected")
+                            viewModel.updatePlannedActivity(activity: selectedActivity, newDate: selectedDate)
+                            print("Saving date: \(selectedDate) for activity: \(selectedActivity.activity?.title ?? "No title")")
+                            showingSheet = false
                         }
                     }
+                    .padding()
+                    .background(Color.purple)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity)
+                }
+                .padding()
             }
         }
-        
-        private var sortedActivitiesByDate: [PlannedActivityEntity] {
-            return viewModel.plannedActivities
-                .sorted {
-                    ($0.date ?? Date()) < ($1.date ?? Date())
-                }
-        }
     }
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter
-    }()
-    
-    #Preview {
-        CalenderView(viewModel: ActivityViewModel(), selectedDate: .constant(Date()))
+    private var sortedActivitiesByDate: [PlannedActivityEntity] {
+        return viewModel.plannedActivities
+            .sorted {
+                ($0.date ?? Date()) < ($1.date ?? Date())
+            }
     }
-    
+}
+
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}()
+
+#Preview {
+    CalenderView(viewModel: ActivityViewModel(), selectedDate: .constant(Date()))
+}
