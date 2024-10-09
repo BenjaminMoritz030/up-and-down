@@ -1,4 +1,4 @@
-# plan-bi
+# Up and Down
 
 ### Abschlussprojekt von Batch15 des Swift Moduls beim Syntax Institut
 
