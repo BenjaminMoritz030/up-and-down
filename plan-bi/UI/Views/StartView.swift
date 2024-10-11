@@ -12,7 +12,9 @@ struct StartView: View {
     
     @StateObject var viewModel = ActivityViewModel()
     
+     @State private var animated = false
     @State private var changeColors = false
+    
     // Aktuelles Datum generieren
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -20,24 +22,42 @@ struct StartView: View {
         return formatter
     }()
     
-    private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
-    
     var body: some View {
         
         NavigationStack {
             ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: changeColors ? [ Color.green, Color.orange] : [Color.purple, Color.yellow]),
-                    startPoint: .top,
-                    endPoint: .bottom
+                MeshGradient(
+                    width: 3,
+                    height: 3,
+                    points: [
+                        [0.0, 0.0], [0.5, animated ? 0.0 : 0.0], [1.0, 0.0],
+                        [0.0, animated ? 0.0 : 0.5], [0.0, 0.3], [1.0, animated ? 0.7 : 0.5],
+                        [0.0, 1.0], [1.0, animated ? 1.0 : 1.0], [1.0, 1.0]
+                    ],
+                    colors: [
+                        .purple, .green, .purple,
+                        .purple, .orange, .green,
+                        .green, .yellow, .purple
+                    ]
                 )
-                .onReceive(timer) { _ in
-                    withAnimation(.easeInOut(duration: 3)) {
-                        changeColors.toggle()
+                .ignoresSafeArea(edges: .top)
+                .onAppear {
+                    withAnimation(Animation.easeInOut(duration: 10).repeatForever(autoreverses: false)) {
+                        animated.toggle()
                     }
                 }
-                .edgesIgnoringSafeArea(.top)
                 
+//                LinearGradient(
+//                    gradient: Gradient(colors: changeColors ? [Color.green, Color.orange] : [Color.orange, Color.green]),
+//                    startPoint: .top,
+//                    endPoint: .bottom
+//                )
+//                .edgesIgnoringSafeArea(.top)
+//                .onAppear {
+//                    withAnimation(Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
+//                        changeColors.toggle()
+//                    }
+//                }
                 
                 VStack {
                     
@@ -83,9 +103,6 @@ struct StartView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding()
-                    
-                    Image(systemName: "square.and.arrow.uparrowshape.down")
-                        .foregroundColor(.white)
                     
                     Spacer()
                     

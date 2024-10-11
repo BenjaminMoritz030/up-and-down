@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MetalKit
 
 struct ActivityDetailView: View {
     
@@ -17,6 +18,11 @@ struct ActivityDetailView: View {
     @State private var showDatePicker = false
     @State private var selectedDate: Date = Date()
     @State private var showAlert = false
+    @State private var alertMessage = ""
+    // var for metal shader
+    @State private var elapsed: Float = 0.0
+    
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -43,6 +49,15 @@ struct ActivityDetailView: View {
                     .foregroundColor(.black)
                     .padding()
                 
+                Image("pb-logo-neu-fff")
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .padding()
+                    .distortionEffect(
+                        ShaderLibrary.wave(.float(elapsed)),
+                        maxSampleOffset: CGSize(width: 31, height: 31)
+                    )
+                
                 Spacer()
                 
                 Button(action: {
@@ -64,12 +79,18 @@ struct ActivityDetailView: View {
                         DatePicker(
                             "Select Date",
                             selection: $selectedDate,
+                            in: Date()...,
                             displayedComponents: [.date]
                         )
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .padding()
                         
                         Button("Save Date") {
+                            if Calendar.current.isDateInToday(selectedDate) {
+                                alertMessage = "Your activity has been saved. Go to your calendar to see it."
+                            } else {
+                                alertMessage = "Your activity has been saved. Go to your calendar to see it."
+                            }
                             viewModel.savePlannedActivity(date: selectedDate, activity: activity)
                             showDatePicker = false
                             showAlert = true
@@ -86,19 +107,19 @@ struct ActivityDetailView: View {
             .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Activity Saved"),
-                    message: Text("Your activity has been saved. You can view it in your calendar."),
+                    message: Text(alertMessage),
                     dismissButton: .default(Text("OK"))
                 )
             }
         }
     }
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()
 
 #Preview {
     ActivityDetailView(activity: ActivityEntity(context: PersistentStore.shared.context))
