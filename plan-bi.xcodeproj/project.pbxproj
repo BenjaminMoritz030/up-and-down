@@ -27,6 +27,7 @@
 		B2C498262C9C54E10030F8EA /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C498252C9C54E10030F8EA /* Activities.swift */; };
 		B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C859562C6500B800C0F33D /* ActivityViewModel.swift */; };
 		B2EC1B332C6212CE008370F8 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC1B322C6212CE008370F8 /* StartView.swift */; };
+		B2EE66122CBD393800965EC9 /* MeshGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EE66112CBD393800965EC9 /* MeshGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		B2C498252C9C54E10030F8EA /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		B2C859562C6500B800C0F33D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		B2EC1B322C6212CE008370F8 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		B2EE66112CBD393800965EC9 /* MeshGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -218,6 +220,7 @@
 				B24A19C42C957C85006215EA /* ActivityListView.swift */,
 				B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */,
 				B27A2E922CA20A2500EF639C /* CalenderView.swift */,
+				B2EE66112CBD393800965EC9 /* MeshGradient.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */,
 				B2110CF82C60B8830087E467 /* ContentView.swift in Sources */,
 				B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */,
+				B2EE66122CBD393800965EC9 /* MeshGradient.swift in Sources */,
 				B2110CF62C60B8830087E467 /* plan_biApp.swift in Sources */,
 				B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */,
 				B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */,

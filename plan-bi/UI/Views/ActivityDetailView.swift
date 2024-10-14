@@ -26,17 +26,21 @@ struct ActivityDetailView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: changeColors ? [Color.green, Color.orange] : [Color.orange, Color.green]),
-                startPoint: .top,
-                endPoint: .bottom
+            MeshGradient(
+                width: 3,
+                height: 3,
+                points: [
+                    [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
+                    [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
+                    [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
+                ],
+                colors: [
+                    .purple, .green, .purple,
+                    .purple, .orange, .green,
+                    .green, .yellow, .purple
+                ]
             )
-            .ignoresSafeArea(edges: .top)
-            .onAppear {
-                withAnimation(Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
-                    changeColors.toggle()
-                }
-            }
+            .edgesIgnoringSafeArea(.top)
             
             VStack {
                 Text(activity.title ?? "No Title")
