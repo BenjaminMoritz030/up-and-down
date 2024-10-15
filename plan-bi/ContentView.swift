@@ -27,7 +27,7 @@ struct ContentView: View {
             CalenderView(viewModel: activityViewModel, selectedDate: $selectedDate)
                 .tabItem {
 //                    Label("Check In", systemImage: "apple.meditate")
-                    Label("Check In", systemImage: "calendar")
+                    Label("Calendar", systemImage: "calendar")
                 }
         }
         .tint(.primary)

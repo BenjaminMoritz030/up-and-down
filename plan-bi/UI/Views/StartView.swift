@@ -12,35 +12,26 @@ struct StartView: View {
     
     @StateObject var viewModel = ActivityViewModel()
     
-    @State private var changeColors = false
-    // Aktuelles Datum generieren
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, d. MMMM yyyy"
-        return formatter
-    }()
-    
-    private let timer = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
-    
     var body: some View {
-        
         NavigationStack {
             ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: changeColors ? [ Color.green, Color.orange] : [Color.purple, Color.yellow]),
-                    startPoint: .top,
-                    endPoint: .bottom
+                MeshGradient(
+                    width: 3,
+                    height: 3,
+                    points: [
+                        [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
+                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
+                        [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
+                    ],
+                    colors: [
+                        .purple, .green, .purple,
+                        .purple, .orange, .green,
+                        .green, .yellow, .purple
+                    ]
                 )
-                .onReceive(timer) { _ in
-                    withAnimation(.easeInOut(duration: 3)) {
-                        changeColors.toggle()
-                    }
-                }
                 .edgesIgnoringSafeArea(.top)
                 
-                
                 VStack {
-                    
                     Image("pb-logo-neu-fff")
                         .resizable()
                         .scaledToFit()
@@ -51,7 +42,6 @@ struct StartView: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.white)
                         .padding()
-                    
                     
                     Text("Take a deep breath, no need to worry. Let's plan your day together.")
                         .font(.custom("Supreme Variable", size: 30))
@@ -73,8 +63,8 @@ struct StartView: View {
                             .padding(.vertical, 10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.purple, lineWidth: 2))
-                            .foregroundColor(.purple)
+                                    .stroke(Color.white, lineWidth: 2))
+                            .foregroundColor(.white)
                             .padding()
                     }
                     
@@ -84,23 +74,24 @@ struct StartView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    Image(systemName: "square.and.arrow.uparrowshape.down")
-                        .foregroundColor(.white)
-                    
                     Spacer()
-                    
-                    
-                    
-                }
-            }
-            .onAppear {
-                Task {
-                    try await viewModel.load()
                 }
             }
         }
+        .onAppear {
+            Task {
+                try await viewModel.load()
+            }
+        }
     }
-}
+        
+    }
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, d. MMMM yyyy"
+        return formatter
+    }()
 
 #Preview {
     StartView()

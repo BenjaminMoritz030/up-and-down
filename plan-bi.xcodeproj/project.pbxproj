@@ -19,7 +19,6 @@
 		B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */; };
 		B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25BC43A2C91FC10006E54CC /* CheckInView.swift */; };
 		B27A2E932CA20A2500EF639C /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A2E922CA20A2500EF639C /* CalenderView.swift */; };
-		B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */ = {isa = PBXBuildFile; productRef = B27A2E9B2CA2B68800EF639C /* MijickCalendarView */; };
 		B297E5702CA30219007BB324 /* Affirmations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297E56F2CA30219007BB324 /* Affirmations.swift */; };
 		B2C4981D2C9C48B10030F8EA /* Activities.json in Resources */ = {isa = PBXBuildFile; fileRef = B2C4981C2C9C48B10030F8EA /* Activities.json */; };
 		B2C498202C9C49860030F8EA /* ActivityManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */; };
@@ -27,6 +26,7 @@
 		B2C498262C9C54E10030F8EA /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C498252C9C54E10030F8EA /* Activities.swift */; };
 		B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C859562C6500B800C0F33D /* ActivityViewModel.swift */; };
 		B2EC1B332C6212CE008370F8 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EC1B322C6212CE008370F8 /* StartView.swift */; };
+		B2EE66122CBD393800965EC9 /* MeshGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EE66112CBD393800965EC9 /* MeshGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +70,7 @@
 		B2C498252C9C54E10030F8EA /* Activities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activities.swift; sourceTree = "<group>"; };
 		B2C859562C6500B800C0F33D /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		B2EC1B322C6212CE008370F8 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		B2EE66112CBD393800965EC9 /* MeshGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -82,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B27A2E9C2CA2B68800EF639C /* MijickCalendarView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +130,7 @@
 				B254693E2CA42DDC004B9A5E /* Fonts */,
 				B24A19B42C9436AA006215EA /* UI */,
 				B24A19B32C9436A3006215EA /* Data */,
+				B2C498212C9C531B0030F8EA /* FileManager.swift */,
 				B2110CF52C60B8830087E467 /* plan_biApp.swift */,
 				B2110CF72C60B8830087E467 /* ContentView.swift */,
 				B2110CF92C60B8850087E467 /* Assets.xcassets */,
@@ -185,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				B2C498272C9C59440030F8EA /* Utilities */,
-				B2C498212C9C531B0030F8EA /* FileManager.swift */,
 				B24A19B72C9577CD006215EA /* CoreData */,
 				B24A19B12C9435B5006215EA /* Models */,
 			);
@@ -218,6 +218,7 @@
 				B24A19C42C957C85006215EA /* ActivityListView.swift */,
 				B24FBCEC2CA1AAE200E285F8 /* ActivityDetailView.swift */,
 				B27A2E922CA20A2500EF639C /* CalenderView.swift */,
+				B2EE66112CBD393800965EC9 /* MeshGradient.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,7 +316,6 @@
 			);
 			mainGroup = B2110CE92C60B8830087E467;
 			packageReferences = (
-				B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */,
 			);
 			productRefGroup = B2110CF32C60B8830087E467 /* Products */;
 			projectDirPath = "";
@@ -368,6 +368,7 @@
 				B24FBCED2CA1AAE200E285F8 /* ActivityDetailView.swift in Sources */,
 				B2110CF82C60B8830087E467 /* ContentView.swift in Sources */,
 				B25BC43B2C91FC10006E54CC /* CheckInView.swift in Sources */,
+				B2EE66122CBD393800965EC9 /* MeshGradient.swift in Sources */,
 				B2110CF62C60B8830087E467 /* plan_biApp.swift in Sources */,
 				B2C859572C6500B800C0F33D /* ActivityViewModel.swift in Sources */,
 				B24A19C52C957C85006215EA /* ActivityListView.swift in Sources */,
@@ -544,6 +545,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,6 +575,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,25 +701,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Mijick/CalendarView.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B27A2E9B2CA2B68800EF639C /* MijickCalendarView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B27A2E9A2CA2B68800EF639C /* XCRemoteSwiftPackageReference "CalendarView" */;
-			productName = MijickCalendarView;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B2C4981E2C9C49860030F8EA /* ActivityManager.xcdatamodeld */ = {

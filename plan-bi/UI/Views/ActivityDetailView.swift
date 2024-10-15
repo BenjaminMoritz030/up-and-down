@@ -13,24 +13,29 @@ struct ActivityDetailView: View {
     
     var activity: ActivityEntity
     
-    @State private var changeColors = false
     @State private var showDatePicker = false
     @State private var selectedDate: Date = Date()
+    
     @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: changeColors ? [Color.green, Color.orange] : [Color.orange, Color.green]),
-                startPoint: .top,
-                endPoint: .bottom
+            MeshGradient(
+                width: 3,
+                height: 3,
+                points: [
+                    [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
+                    [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
+                    [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
+                ],
+                colors: [
+                    .purple, .green, .purple,
+                    .purple, .orange, .green,
+                    .green, .yellow, .purple
+                ]
             )
-            .ignoresSafeArea(edges: .top)
-            .onAppear {
-                withAnimation(Animation.easeInOut(duration: 3.0).repeatForever(autoreverses: true)) {
-                    changeColors.toggle()
-                }
-            }
+            .edgesIgnoringSafeArea(.top)
             
             VStack {
                 Text(activity.title ?? "No Title")
@@ -64,12 +69,18 @@ struct ActivityDetailView: View {
                         DatePicker(
                             "Select Date",
                             selection: $selectedDate,
+                            in: Date()...,
                             displayedComponents: [.date]
                         )
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .padding()
                         
                         Button("Save Date") {
+                            if Calendar.current.isDateInToday(selectedDate) {
+                                alertMessage = "Your activity has been saved. Go to your calendar to see it."
+                            } else {
+                                alertMessage = "Your activity has been saved. Go to your calendar to see it."
+                            }
                             viewModel.savePlannedActivity(date: selectedDate, activity: activity)
                             showDatePicker = false
                             showAlert = true
@@ -83,22 +94,24 @@ struct ActivityDetailView: View {
                 }
             }
             .padding()
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Activity Saved"),
-                    message: Text("Your activity has been saved. You can view it in your calendar."),
-                    dismissButton: .default(Text("OK"))
-                )
+            .alert("Activity Saved", isPresented: $showAlert) {
+                Button("OK") {
+                    
+                }
+            } message: {
+                Text(alertMessage)
+                    .font(.system(size: 18))
+                    .padding()
             }
         }
     }
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()
 
 #Preview {
     ActivityDetailView(activity: ActivityEntity(context: PersistentStore.shared.context))

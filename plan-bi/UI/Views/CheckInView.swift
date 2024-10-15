@@ -11,7 +11,6 @@ struct CheckInView: View {
     
     @StateObject var viewModel = ActivityViewModel()
     
-    @State private var changeColors = false
     @State private var isAnimating = false
     
     @State private var mood: String = "Medium"
@@ -26,12 +25,22 @@ struct CheckInView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.green, Color.blue, Color.orange]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                MeshGradient(
+                    width: 3,
+                    height: 3,
+                    points: [
+                        [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
+                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
+                        [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
+                    ],
+                    colors: [
+                        .purple, .green, .purple,
+                        .purple, .orange, .green,
+                        .green, .yellow, .purple
+                    ]
                 )
-                .ignoresSafeArea(edges: .top)
+                .edgesIgnoringSafeArea(.top)
+                
                 VStack {
                     Image("pb-logo-neu-fff")
                         .resizable()
@@ -162,6 +171,7 @@ struct CheckInView: View {
                         .foregroundColor(.white)
                     }
                     
+                    
                     NavigationLink(destination: ActivityListView(activities: viewModel.suggestActivities(for: mood, and: drive), filteredMood: mood, filteredDrive: drive)) {
                         Text("Suggest Activities")
                             .font(.system(size: 20, weight: .bold))
@@ -178,7 +188,7 @@ struct CheckInView: View {
         }
     }
 }
-
-#Preview {
-    CheckInView()
-}
+    
+    #Preview {
+        CheckInView()
+    }
