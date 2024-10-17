@@ -33,6 +33,7 @@ struct CalenderView: View {
             .edgesIgnoringSafeArea(.top)
             
             VStack {
+                
                 Text("Your planned activities")
                     .font(.largeTitle)
                     .foregroundStyle(.white)

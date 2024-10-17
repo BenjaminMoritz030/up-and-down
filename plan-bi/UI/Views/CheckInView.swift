@@ -30,16 +30,20 @@ struct CheckInView: View {
                     height: 3,
                     points: [
                         [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
+                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0],
                         [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
                     ],
                     colors: [
-                        .purple, .green, .purple,
-                        .purple, .orange, .green,
-                        .green, .yellow, .purple
+                        .purple, .yellow, .purple,
+                        .purple, .purple, .cyan,
+                        .cyan, .yellow, .yellow
                     ]
                 )
                 .edgesIgnoringSafeArea(.top)
+                
+//                Color.clear
+//                    .background(.ultraThinMaterial)
+//                    .edgesIgnoringSafeArea(.top)
                 
                 VStack {
                     Image("pb-logo-neu-fff")

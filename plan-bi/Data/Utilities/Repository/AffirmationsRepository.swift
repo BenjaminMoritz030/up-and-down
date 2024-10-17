@@ -8,7 +8,9 @@
 import Foundation
 
 class AffirmationsRepository {
+    
   private let apiKey = "JXUgOmYgvM5s3LztoGV7Og==YKUk0n2qMZdql16o"
+    
   func fetchAffirmations() async throws -> [Affirmations] {
     guard let url = URL(string: "https://api.api-ninjas.com/v1/quotes?category=happiness") else {
       throw HTTPError.invalidURL

@@ -39,13 +39,13 @@ struct ActivityDetailView: View {
             
             VStack {
                 Text(activity.title ?? "No Title")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+                    .font(.custom("Supreme Variable", size: 30))
+                    .foregroundColor(.white)
                     .padding()
                 
                 Text(activity.details ?? "No Details")
-                    .font(.body)
-                    .foregroundColor(.black)
+                    .font(.title2)
+                    .foregroundColor(.white)
                     .padding()
                 
                 Spacer()
@@ -56,12 +56,12 @@ struct ActivityDetailView: View {
                     HStack {
                         Text("Set Date")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         Text("\(selectedDate, formatter: dateFormatter)")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                     }
                     .padding()
-                    .background(Color.purple)
+                    .background(.thickMaterial)
                     .cornerRadius(10)
                 }
                 .sheet(isPresented: $showDatePicker) {
@@ -93,6 +93,9 @@ struct ActivityDetailView: View {
                     }
                 }
             }
+            //            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //            .background(.ultraThinMaterial)
+            .cornerRadius(20)
             .padding()
             .alert("Activity Saved", isPresented: $showAlert) {
                 Button("OK") {
@@ -116,4 +119,3 @@ struct ActivityDetailView: View {
 #Preview {
     ActivityDetailView(activity: ActivityEntity(context: PersistentStore.shared.context))
 }
-

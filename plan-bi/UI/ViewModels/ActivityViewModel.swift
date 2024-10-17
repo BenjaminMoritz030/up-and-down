@@ -13,6 +13,7 @@ class ActivityViewModel: ObservableObject {
     @Published var plannedActivities: [PlannedActivityEntity] = []
     @Published var activities: [ActivityEntity] = []
     @Published var affirmations: [Affirmations] = []
+//    @Published var activityExperience: [ActivityExperienceEntity]
     
     private let repository = AffirmationsRepository()
     
@@ -128,6 +129,19 @@ class ActivityViewModel: ObservableObject {
         
         return filteredActivities
     }
+
+//    func saveActivityExperience(message: String, date: Date) {
+//        // Erstelle eine neue Instanz von ActivityExperienceEntity
+//        let newActivityExperience = ActivityExperienceEntity(context: container)
+//        newActivityExperience.id = UUID()
+//        newActivityExperience.date = date
+//        newActivityExperience.message = message
+//        
+//        saveContext()
+//        
+//        // Füge die neue Erfahrung der geplanten Aktivitäten hinzu (um die UI sofort zu aktualisieren)
+//        activityExperience.append(newActivityExperience)
+//    }
     
     private func saveContext() {
         PersistentStore.shared.save()

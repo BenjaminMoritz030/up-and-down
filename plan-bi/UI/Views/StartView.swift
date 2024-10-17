@@ -13,23 +13,9 @@ struct StartView: View {
     @StateObject var viewModel = ActivityViewModel()
     
     var body: some View {
-        NavigationStack {
             ZStack {
-                MeshGradient(
-                    width: 3,
-                    height: 3,
-                    points: [
-                        [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
-                        [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
-                    ],
-                    colors: [
-                        .purple, .green, .purple,
-                        .purple, .orange, .green,
-                        .green, .yellow, .purple
-                    ]
-                )
-                .edgesIgnoringSafeArea(.top)
+                
+                    AnimatedMeshView()
                 
                 VStack {
                     Image("pb-logo-neu-fff")
@@ -74,10 +60,8 @@ struct StartView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    Spacer()
                 }
             }
-        }
         .onAppear {
             Task {
                 try await viewModel.load()
@@ -94,5 +78,6 @@ struct StartView: View {
     }()
 
 #Preview {
-    StartView()
+    StartView().ignoresSafeArea(.all, edges: .bottom)
+    
 }
