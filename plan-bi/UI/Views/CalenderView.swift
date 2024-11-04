@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalenderView: View {
+    
     @ObservedObject var viewModel: ActivityViewModel
     
     @State private var showingSheet = false
@@ -16,21 +17,8 @@ struct CalenderView: View {
     
     var body: some View {
         ZStack {
-            MeshGradient(
-                width: 3,
-                height: 3,
-                points: [
-                    [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                    [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
-                    [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
-                ],
-                colors: [
-                    .purple, .green, .purple,
-                    .purple, .orange, .green,
-                    .green, .yellow, .purple
-                ]
-            )
-            .edgesIgnoringSafeArea(.top)
+            
+            AnimatedMeshView()
             
             VStack {
                 
@@ -65,6 +53,7 @@ struct CalenderView: View {
                                 }
                                 
                                 Spacer()
+                                
                             }
                             .swipeActions(allowsFullSwipe: false) {
                                 Button(action: {
@@ -93,6 +82,7 @@ struct CalenderView: View {
                     }
                 }
                 .listStyle(SidebarListStyle())
+                .scrollContentBackground(.hidden)
             }
             .onAppear {
                 viewModel.fetchPlannedActivity()
@@ -107,7 +97,8 @@ struct CalenderView: View {
                     )
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding()
-
+                    .accentColor(.purple)
+                    
                     Button("Edit Date") {
                         if let selectedActivity = selectedActivity {
                             viewModel.updatePlannedActivity(activity: selectedActivity, newDate: selectedDate)

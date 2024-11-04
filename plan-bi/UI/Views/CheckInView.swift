@@ -25,25 +25,8 @@ struct CheckInView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                MeshGradient(
-                    width: 3,
-                    height: 3,
-                    points: [
-                        [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                        [0.0, 0.2], [0.0, 0.0], [1.0, 0.0],
-                        [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
-                    ],
-                    colors: [
-                        .purple, .yellow, .purple,
-                        .purple, .purple, .cyan,
-                        .cyan, .yellow, .yellow
-                    ]
-                )
-                .edgesIgnoringSafeArea(.top)
                 
-//                Color.clear
-//                    .background(.ultraThinMaterial)
-//                    .edgesIgnoringSafeArea(.top)
+                AnimatedMeshView()
                 
                 VStack {
                     Image("pb-logo-neu-fff")
@@ -57,18 +40,17 @@ struct CheckInView: View {
                                 isAnimating = true
                             }
                         }
-                    
-                    Spacer()
-                    
+                                        
                     Text("Tell me, how do you feel today?")
                         .font(.custom("Supreme Variable", size: 30))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
-                    
-                    Spacer()
-                    
+                                        
                     VStack(alignment: .leading, spacing: 20) {
+                        
+                        Spacer()
+                        
                         Section(header: Text("Select your mood"))
                         {
                             Button(action: {
@@ -117,7 +99,7 @@ struct CheckInView: View {
                                 }
                             }
                         }
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.system(size: 30))
                         .foregroundColor(.white)
                         
                         Section(header: Text("Select your drive")) {
@@ -171,7 +153,7 @@ struct CheckInView: View {
                                 }
                             }
                         }
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.system(size: 30))
                         .foregroundColor(.white)
                     }
                     
@@ -180,8 +162,8 @@ struct CheckInView: View {
                         Text("Suggest Activities")
                             .font(.system(size: 20, weight: .bold))
                             .padding()
-                            .background(Color.purple)
-                            .foregroundColor(.white)
+                            .background(.thinMaterial)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .frame(maxWidth: .infinity)
                     }

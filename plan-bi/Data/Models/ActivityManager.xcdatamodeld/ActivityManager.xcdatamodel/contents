@@ -7,14 +7,7 @@
         <attribute name="mood" optional="YES" attributeType="String"/>
         <attribute name="selectedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="activityexperience" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityExperienceEntity" inverseName="activityexperience" inverseEntity="ActivityExperienceEntity"/>
         <relationship name="plannedactivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlannedActivityEntity" inverseName="activity" inverseEntity="PlannedActivityEntity"/>
-    </entity>
-    <entity name="ActivityExperienceEntity" representedClassName="ActivityExperienceEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="message" optional="YES" attributeType="String"/>
-        <relationship name="activityexperience" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityEntity" inverseName="activityexperience" inverseEntity="ActivityEntity"/>
     </entity>
     <entity name="PlannedActivityEntity" representedClassName="PlannedActivityEntity" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

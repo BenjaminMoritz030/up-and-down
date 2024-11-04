@@ -21,21 +21,8 @@ struct ActivityDetailView: View {
     
     var body: some View {
         ZStack {
-            MeshGradient(
-                width: 3,
-                height: 3,
-                points: [
-                    [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                    [0.0, 0.2], [0.0, 0.0], [1.0, 0.0], [1.0, 0.5],
-                    [0.0, 1.0], [1.0, 1.0], [1.0, 1.0]
-                ],
-                colors: [
-                    .purple, .green, .purple,
-                    .purple, .orange, .green,
-                    .green, .yellow, .purple
-                ]
-            )
-            .edgesIgnoringSafeArea(.top)
+            
+            AnimatedMeshView()
             
             VStack {
                 Text(activity.title ?? "No Title")
@@ -61,7 +48,7 @@ struct ActivityDetailView: View {
                             .foregroundColor(.black)
                     }
                     .padding()
-                    .background(.thickMaterial)
+                    .background(.thinMaterial)
                     .cornerRadius(10)
                 }
                 .sheet(isPresented: $showDatePicker) {
@@ -74,6 +61,7 @@ struct ActivityDetailView: View {
                         )
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .padding()
+                        .accentColor(.purple)
                         
                         Button("Save Date") {
                             if Calendar.current.isDateInToday(selectedDate) {
@@ -93,12 +81,10 @@ struct ActivityDetailView: View {
                     }
                 }
             }
-            //            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            //            .background(.ultraThinMaterial)
             .cornerRadius(20)
             .padding()
             .alert("Activity Saved", isPresented: $showAlert) {
-                Button("OK") {
+                Button("Done") {
                     
                 }
             } message: {
